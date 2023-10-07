@@ -25,8 +25,6 @@ DROP EXTENSION IF EXISTS vector;
 -- Drop stats table
 DROP TABLE IF EXISTS stats;
 
-
-
 -- Drop api_keys table
 DROP TABLE IF EXISTS api_keys;
 
@@ -45,14 +43,14 @@ DROP TABLE IF EXISTS knowledge;
 -- DROP brains X users table (depends on brains)
 DROP TABLE IF EXISTS brains_users;
 
---- Drop prompts table
-DROP TABLE IF EXISTS prompts;
+-- DROP brains X vectors table (depends on brains)
+DROP TABLE IF EXISTS brain_subscription_invitations;
 
 --- Drop brains table (depends on prompts)
 DROP TABLE IF EXISTS brains;
 
--- DROP brains X vectors table
-DROP TABLE IF EXISTS brain_subscription_invitations;
+--- Drop prompts table
+DROP TABLE IF EXISTS prompts;
 
 --- DROP user_identity table
 DROP TABLE IF EXISTS user_identity;
