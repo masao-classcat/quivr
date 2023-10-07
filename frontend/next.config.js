@@ -9,12 +9,16 @@ const nextConfig = {
   },
   // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
   async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: securityHeaders,
-      },
-    ];
+    if (process.env.NEXT_PUBLIC_ENV === "prod") {
+      return [
+        {
+          source: "/(.*)",
+          headers: securityHeaders,
+        },
+      ];
+    } else {
+      return [];
+    }
   },
 };
 
@@ -24,11 +28,7 @@ const ContentSecurityPolicy = {
     "https://fonts.googleapis.com",
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     "https://api.june.so",
-    {
-      prod: "https://www.quivr.app/",
-      preview: "https://preview.quivr.app/",
-      local: ["http://localhost:3000", "http://localhost:3001"],
-    },
+    "https://www.quivr.app/",
   ],
   "connect-src": [
     "'self'",
@@ -50,38 +50,13 @@ const ContentSecurityPolicy = {
     "'unsafe-inline'",
     "'unsafe-eval'",
     "https://va.vercel-scripts.com/",
-    {
-      prod: "https://www.quivr.app/",
-      preview: "https://preview.quivr.app/",
-      local: ["http://localhost:3000", "http://localhost:3001"],
-    },
+    "https://www.quivr.app/",
     "https://www.google-analytics.com/",
   ],
   "frame-ancestors": ["'none'"],
-  "style-src": [
-    "'unsafe-inline'",
-    {
-      prod: "https://www.quivr.app/",
-      preview: "https://preview.quivr.app/",
-      local: ["http://localhost:3000", "http://localhost:3001"],
-    },
-  ],
+  "style-src": ["'unsafe-inline'", "https://www.quivr.app/"],
 };
 
-// Resolve environment-specific CSP values
-for (const directive of Object.values(ContentSecurityPolicy)) {
-  for (const [index, resource] of directive.entries()) {
-    if (typeof resource === "string") {
-      continue;
-    }
-    directive[index] = resource[process.env.NEXT_PUBLIC_ENV];
-    if (Array.isArray(directive[index])) {
-      directive[index] = directive[index].join(" ");
-    }
-  }
-}
-
-// Build CSP string
 const cspString = Object.entries(ContentSecurityPolicy)
   .map(([key, values]) => `${key} ${values.join(" ")};`)
   .join(" ");
