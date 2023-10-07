@@ -5,6 +5,5 @@
     "requestsCount": "Peticiones de hoy: {{count}}",
     "title": "Uso del cerebro de {{user}}",
     "Unused": "Sin usar",
-    "Used": "Usado",
-    "brainUsage": "Uso del cerebro"
+    "Used": "Usado"
 }

@@ -46,7 +46,5 @@
   "Owner": "Propriétaire",
   "saveButton": "Sauvegarder",
   "invalidUrl": "URL invalide",
-  "crawlButton": "Crawler",
-  "themeSelect": "Thème de l'interface",
-  "languageSelect": "Langue préférée"
+  "crawlButton": "Crawler"
 }

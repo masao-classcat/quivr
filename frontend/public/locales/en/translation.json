@@ -46,7 +46,5 @@
   "Owner": "Owner",
   "saveButton": "Save",
   "invalidUrl": "Invalid URL",
-  "crawlButton": "Crawl",
-  "themeSelect": "Interface theme",
-  "languageSelect": "Preferred language"
+  "crawlButton": "Crawl"
 }
