@@ -1,20 +1,26 @@
 -- Drop users table
 DROP TABLE IF EXISTS user_daily_usage;
 
+-- Drop summaries table (depends on vectors, vector)
+DROP TABLE IF EXISTS summaries;
+
+-- DROP brains X vectors table (depend on vectors)
+DROP TABLE IF EXISTS brains_vectors;
+
+-- knowledge_vectors table (depends on vectors)
+DROP TABLE IF EXISTS knowledge_vectors;
+
 -- Drop vectors table (depend on vector)
 DROP TABLE IF EXISTS vectors;
+
+-- Drop function to match vectors (depends on vector)
+DROP FUNCTION IF EXISTS match_vectors;
 
 -- Drop vector extension
 DROP EXTENSION IF EXISTS vector;
 
--- Drop function to match vectors
-DROP FUNCTION IF EXISTS match_vectors;
-
 -- Drop stats table
 DROP TABLE IF EXISTS stats;
-
--- Drop summaries table
-DROP TABLE IF EXISTS summaries;
 
 -- Drop function to match summaries
 DROP FUNCTION IF EXISTS match_summaries;
@@ -22,14 +28,14 @@ DROP FUNCTION IF EXISTS match_summaries;
 -- Drop api_keys table
 DROP TABLE IF EXISTS api_keys;
 
+-- Drop chat_history table (depends on chats)
+DROP TABLE IF EXISTS chat_history;
+
 -- Drop chats table (depends on auth.users)
 DROP TABLE IF EXISTS chats;
 
 -- knowledge table (depends on brains)
 DROP TABLE IF EXISTS knowledge;
-
--- knowledge_vectors table
-DROP TABLE IF EXISTS knowledge_vectors;
 
 --- Drop brains table (depends on prompts)
 DROP TABLE IF EXISTS brains;
@@ -37,18 +43,12 @@ DROP TABLE IF EXISTS brains;
 --- Drop prompts table
 DROP TABLE IF EXISTS prompts;
 
--- Drop chat_history table
-DROP TABLE IF EXISTS chat_history;
-
 -- DROP notification table
 
 DROP TABLE IF EXISTS notifications;
 
 -- DROP brains X users table
 DROP TABLE IF EXISTS brains_users;
-
--- DROP brains X vectors table
-DROP TABLE IF EXISTS brains_vectors;
 
 -- DROP brains X vectors table
 DROP TABLE IF EXISTS brain_subscription_invitations;
