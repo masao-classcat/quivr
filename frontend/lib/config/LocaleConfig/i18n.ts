@@ -8,6 +8,7 @@ import { resources } from "./resources";
 
 const defaultNS = "translation";
 
+// masao : 09-oct-23
 i18n.use(initReactI18next).init({
   lng: "ja",
   fallbackLng: "ja",

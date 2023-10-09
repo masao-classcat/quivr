@@ -29,6 +29,24 @@ import translation_es from "../../../public/locales/es/translation.json";
 import updatePassword_es from "../../../public/locales/es/updatePassword.json";
 import upload_es from "../../../public/locales/es/upload.json";
 import user_es from "../../../public/locales/es/user.json";
+
+// masao : 09-oct-23
+// import all namespaces Japanese
+import brain_ja from "../../../public/locales/ja/brain.json";
+import chat_ja from "../../../public/locales/ja/chat.json";
+import config_ja from "../../../public/locales/ja/config.json";
+import delete_brain_ja from "../../../public/locales/ja/deleteOrUnsubscribeFromBrain.json";
+import explore_ja from "../../../public/locales/ja/explore.json";
+import invitation_ja from "../../../public/locales/ja/invitation.json";
+import knowlegde_ja from "../../../public/locales/ja/knowledge.json";
+import login_ja from "../../../public/locales/ja/login.json";
+import logout_ja from "../../../public/locales/ja/logout.json";
+import signUp_ja from "../../../public/locales/ja/signUp.json";
+import translation_ja from "../../../public/locales/ja/translation.json";
+import updatePassword_ja from "../../../public/locales/ja/updatePassword.json";
+import upload_ja from "../../../public/locales/ja/upload.json";
+import user_ja from "../../../public/locales/ja/user.json";
+
 // import all namespaces French
 import brain_fr from "../../../public/locales/fr/brain.json";
 import chat_fr from "../../../public/locales/fr/chat.json";
@@ -108,7 +126,9 @@ export type Translations = {
   knowledge: typeof import("../../../public/locales/en/knowledge.json");
 };
 
+// masao : 09-oct-23
 enum SupportedLanguages {
+  ja="ja",
   en = "en",
   es = "es",
   fr = "fr",
@@ -134,6 +154,22 @@ export const resources: Record<SupportedLanguages, Translations> = {
     user: user_en,
     delete_or_unsubscribe_from_brain: delete_brain_en,
     knowledge: knowlegde_en,
+  },
+  ja: {
+    brain: brain_ja,
+    chat: chat_ja,
+    config: config_ja,
+    explore: explore_ja,
+    invitation: invitation_ja,
+    login: login_ja,
+    logout: logout_ja,
+    signUp: signUp_ja,
+    translation: translation_ja,
+    updatePassword: updatePassword_ja,
+    upload: upload_ja,
+    user: user_ja,
+    delete_or_unsubscribe_from_brain: delete_brain_ja,
+    knowledge: knowlegde_ja,
   },
   es: {
     brain: brain_es,

@@ -18,15 +18,16 @@ export const useLanguageHook = (): {
   const [currentLanguage, setCurrentLanguage] = useState<Language | null>(null);
   const { track } = useEventTracking();
 
+  // masao : 09-oct-23
   useEffect(() => {
     const languages = [
       {
-        id: "ja",
-        name: "日本語",
-      },
-      {
         id: "en",
         name: "English",
+      },
+      {
+        id: "ja",
+        name: "日本語",
       },
       {
         id: "es",
