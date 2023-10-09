@@ -14,7 +14,6 @@ import translation_en from "../../../public/locales/en/translation.json";
 import updatePassword_en from "../../../public/locales/en/updatePassword.json";
 import upload_en from "../../../public/locales/en/upload.json";
 import user_en from "../../../public/locales/en/user.json";
-
 // import all namespaces Spanish
 import brain_es from "../../../public/locales/es/brain.json";
 import chat_es from "../../../public/locales/es/chat.json";
@@ -30,7 +29,6 @@ import translation_es from "../../../public/locales/es/translation.json";
 import updatePassword_es from "../../../public/locales/es/updatePassword.json";
 import upload_es from "../../../public/locales/es/upload.json";
 import user_es from "../../../public/locales/es/user.json";
-
 // import all namespaces French
 import brain_fr from "../../../public/locales/fr/brain.json";
 import chat_fr from "../../../public/locales/fr/chat.json";
@@ -46,7 +44,6 @@ import translation_fr from "../../../public/locales/fr/translation.json";
 import updatePassword_fr from "../../../public/locales/fr/updatePassword.json";
 import upload_fr from "../../../public/locales/fr/upload.json";
 import user_fr from "../../../public/locales/fr/user.json";
-
 // masao : 09-oct-23
 // import all namespaces Japanese
 import brain_ja from "../../../public/locales/ja/brain.json";
@@ -63,7 +60,6 @@ import translation_ja from "../../../public/locales/ja/translation.json";
 import updatePassword_ja from "../../../public/locales/ja/updatePassword.json";
 import upload_ja from "../../../public/locales/ja/upload.json";
 import user_ja from "../../../public/locales/ja/user.json";
-
 // import all namespaces Portuguese
 import brain_ptbr from "../../../public/locales/pt-br/brain.json";
 import chat_ptbr from "../../../public/locales/pt-br/chat.json";
