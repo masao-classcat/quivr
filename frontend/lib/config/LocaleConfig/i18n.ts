@@ -9,8 +9,8 @@ import { resources } from "./resources";
 const defaultNS = "translation";
 
 i18n.use(initReactI18next).init({
-  lng: "en",
-  fallbackLng: "en",
+  lng: "ja",
+  fallbackLng: "ja",
   defaultNS,
   resources,
   debug: process.env.NEXT_PUBLIC_ENV !== "prod",

@@ -21,6 +21,10 @@ export const useLanguageHook = (): {
   useEffect(() => {
     const languages = [
       {
+        id: "ja",
+        name: "日本語",
+      },
+      {
         id: "en",
         name: "English",
       },
