@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+// masao : 09-oct-23 : localization
+
 export const Logo = (): JSX.Element => {
   return (
     <Link
@@ -15,7 +17,7 @@ export const Logo = (): JSX.Element => {
         width={48}
         height={48}
       />
-      <h1 className="font-bold">Quivr</h1>
+      <h1 className="font-bold">Second Brain</h1>
     </Link>
   );
 };
