@@ -7,6 +7,7 @@ import { MdNorthEast } from "react-icons/md";
 
 import Button from "@/lib/components/ui/Button";
 
+// 09-oct-23 : masao : localization
 const Hero = (): JSX.Element => {
   const { t } = useTranslation();
 
