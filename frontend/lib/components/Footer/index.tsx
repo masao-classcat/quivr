@@ -2,6 +2,7 @@
 import { DISCORD_URL, GITHUB_URL, TWITTER_URL } from "@/lib/config/CONSTANTS";
 import { useSupabase } from "@/lib/context/SupabaseProvider";
 
+// masao : 09-oct-23 : remove discord description.
 const Footer = (): JSX.Element => {
   const { session } = useSupabase();
 
@@ -31,14 +32,6 @@ const Footer = (): JSX.Element => {
           aria-label="Quivr Twitter"
         >
           <img className="h-8 w-auto" src="/twitter.svg" alt="Twitter" />
-        </a>
-        <a
-          href={DISCORD_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Quivr Discord"
-        >
-          <img className="h-8 w-auto" src="/discord.svg" alt="Discord" />
         </a>
       </div>
     </footer>
