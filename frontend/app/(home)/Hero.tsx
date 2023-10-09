@@ -29,8 +29,8 @@ const Hero = (): JSX.Element => {
     return "sticky";
   });
 
-  const videoScaleSync = useTransform(scrollYProgress, [0, 0.5], [0.9, 1]);
-  const videoScale = useSpring(videoScaleSync, { mass: 0.1, stiffness: 100 });
+  // const videoScaleSync = useTransform(scrollYProgress, [0, 0.5], [0.9, 1]);
+  // const videoScale = useSpring(videoScaleSync, { mass: 0.1, stiffness: 100 });
 
   const opacitySync = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const opacity = useSpring(opacitySync, { mass: 0.1, stiffness: 200 });
