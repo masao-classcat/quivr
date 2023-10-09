@@ -14,6 +14,7 @@ import translation_en from "../../../public/locales/en/translation.json";
 import updatePassword_en from "../../../public/locales/en/updatePassword.json";
 import upload_en from "../../../public/locales/en/upload.json";
 import user_en from "../../../public/locales/en/user.json";
+
 // import all namespaces Spanish
 import brain_es from "../../../public/locales/es/brain.json";
 import chat_es from "../../../public/locales/es/chat.json";
@@ -29,6 +30,22 @@ import translation_es from "../../../public/locales/es/translation.json";
 import updatePassword_es from "../../../public/locales/es/updatePassword.json";
 import upload_es from "../../../public/locales/es/upload.json";
 import user_es from "../../../public/locales/es/user.json";
+
+// import all namespaces French
+import brain_fr from "../../../public/locales/fr/brain.json";
+import chat_fr from "../../../public/locales/fr/chat.json";
+import config_fr from "../../../public/locales/fr/config.json";
+import delete_brain_fr from "../../../public/locales/fr/deleteOrUnsubscribeFromBrain.json";
+import explore_fr from "../../../public/locales/fr/explore.json";
+import invitation_fr from "../../../public/locales/fr/invitation.json";
+import knowlegde_fr from "../../../public/locales/fr/knowledge.json";
+import login_fr from "../../../public/locales/fr/login.json";
+import logout_fr from "../../../public/locales/fr/logout.json";
+import signUp_fr from "../../../public/locales/fr/signUp.json";
+import translation_fr from "../../../public/locales/fr/translation.json";
+import updatePassword_fr from "../../../public/locales/fr/updatePassword.json";
+import upload_fr from "../../../public/locales/fr/upload.json";
+import user_fr from "../../../public/locales/fr/user.json";
 
 // masao : 09-oct-23
 // import all namespaces Japanese
@@ -47,21 +64,6 @@ import updatePassword_ja from "../../../public/locales/ja/updatePassword.json";
 import upload_ja from "../../../public/locales/ja/upload.json";
 import user_ja from "../../../public/locales/ja/user.json";
 
-// import all namespaces French
-import brain_fr from "../../../public/locales/fr/brain.json";
-import chat_fr from "../../../public/locales/fr/chat.json";
-import config_fr from "../../../public/locales/fr/config.json";
-import delete_brain_fr from "../../../public/locales/fr/deleteOrUnsubscribeFromBrain.json";
-import explore_fr from "../../../public/locales/fr/explore.json";
-import invitation_fr from "../../../public/locales/fr/invitation.json";
-import knowlegde_fr from "../../../public/locales/fr/knowledge.json";
-import login_fr from "../../../public/locales/fr/login.json";
-import logout_fr from "../../../public/locales/fr/logout.json";
-import signUp_fr from "../../../public/locales/fr/signUp.json";
-import translation_fr from "../../../public/locales/fr/translation.json";
-import updatePassword_fr from "../../../public/locales/fr/updatePassword.json";
-import upload_fr from "../../../public/locales/fr/upload.json";
-import user_fr from "../../../public/locales/fr/user.json";
 // import all namespaces Portuguese
 import brain_ptbr from "../../../public/locales/pt-br/brain.json";
 import chat_ptbr from "../../../public/locales/pt-br/chat.json";
@@ -128,10 +130,10 @@ export type Translations = {
 
 // masao : 09-oct-23
 enum SupportedLanguages {
-  ja="ja",
   en = "en",
   es = "es",
   fr = "fr",
+  ja="ja",
   ptbr = "ptbr",
   ru = "ru",
   zh_cn = "zh_cn",
@@ -155,22 +157,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     delete_or_unsubscribe_from_brain: delete_brain_en,
     knowledge: knowlegde_en,
   },
-  ja: {
-    brain: brain_ja,
-    chat: chat_ja,
-    config: config_ja,
-    explore: explore_ja,
-    invitation: invitation_ja,
-    login: login_ja,
-    logout: logout_ja,
-    signUp: signUp_ja,
-    translation: translation_ja,
-    updatePassword: updatePassword_ja,
-    upload: upload_ja,
-    user: user_ja,
-    delete_or_unsubscribe_from_brain: delete_brain_ja,
-    knowledge: knowlegde_ja,
-  },
+
   es: {
     brain: brain_es,
     chat: chat_es,
@@ -203,6 +190,24 @@ export const resources: Record<SupportedLanguages, Translations> = {
     delete_or_unsubscribe_from_brain: delete_brain_fr,
     knowledge: knowlegde_fr,
   },
+
+  ja: {
+    brain: brain_ja,
+    chat: chat_ja,
+    config: config_ja,
+    explore: explore_ja,
+    invitation: invitation_ja,
+    login: login_ja,
+    logout: logout_ja,
+    signUp: signUp_ja,
+    translation: translation_ja,
+    updatePassword: updatePassword_ja,
+    upload: upload_ja,
+    user: user_ja,
+    delete_or_unsubscribe_from_brain: delete_brain_ja,
+    knowledge: knowlegde_ja,
+  },
+
   ptbr: {
     brain: brain_ptbr,
     chat: chat_ptbr,
