@@ -1,5 +1,6 @@
 "use client";
-import { DISCORD_URL, GITHUB_URL, TWITTER_URL } from "@/lib/config/CONSTANTS";
+import { GITHUB_URL, TWITTER_URL } from "@/lib/config/CONSTANTS";
+// import { DISCORD_URL, GITHUB_URL, TWITTER_URL } from "@/lib/config/CONSTANTS";
 import { useSupabase } from "@/lib/context/SupabaseProvider";
 
 // masao : 09-oct-23 : remove discord description.
