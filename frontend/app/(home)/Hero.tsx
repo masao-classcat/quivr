@@ -7,7 +7,8 @@ import { MdNorthEast } from "react-icons/md";
 
 import Button from "@/lib/components/ui/Button";
 
-// 09-oct-23 : masao : localization
+// 09-oct-23 : masao : localization, remove mp4
+
 const Hero = (): JSX.Element => {
   const { t } = useTranslation();
 
@@ -59,14 +60,6 @@ const Hero = (): JSX.Element => {
           </Button>
         </Link>
       </motion.div>
-      <motion.video
-        style={{ scale: videoScale }}
-        className="rounded-md max-w-screen-lg shadow-lg dark:shadow-white/25 border dark:border-white/25 w-full bg-white dark:bg-black"
-        src="https://user-images.githubusercontent.com/19614572/239713902-a6463b73-76c7-4bc0-978d-70562dca71f5.mp4"
-        autoPlay
-        muted
-        loop
-      />
     </section>
   );
 };
