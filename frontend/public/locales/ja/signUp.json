@@ -7,7 +7,7 @@
     "signUpButton": "サインアップ",
     "or": "or",
     "login": "Already registered? Sign in",
-    "googleLogin": "Login with Google",
+    "googleLogin": "Google でログイン",
     "errorSignUp": "Error signing up: {{errorMessage}}",
     "mailSended": "Confirmation Email sent, please check your email"
 }
