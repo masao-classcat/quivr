@@ -37,6 +37,7 @@ export const useMagicLinkLogin = ({
       },
     });
 
+    // masao : 11-oct-23 : localization
     if (error) {
       publish({
         variant: "danger",
@@ -45,7 +46,8 @@ export const useMagicLinkLogin = ({
     } else {
       publish({
         variant: "success",
-        text: "Magic link sent successfully if email recognized",
+        text: "電子メールが認識されればマジックリンクは正常に送信されました",
+        // text: "Magic link sent successfully if email recognized",
       });
 
       setEmail("");
