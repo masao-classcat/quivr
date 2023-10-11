@@ -3,7 +3,7 @@
     "fetching": "貴方のデータを取得中...",
     "requestsCount": "今日のリクエスト: {{count}}",
     "brainSize": "残りの Brain サイズ",
-    "empty": "Empty",
+    "empty": "空容量",
     "Used": "使用済",
     "Unused": "未使用"
 }
