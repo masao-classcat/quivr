@@ -9,5 +9,5 @@
     "login": "既に登録済みですか？サインインしてください",
     "googleLogin": "Google でログイン",
     "errorSignUp": "Error signing up: {{errorMessage}}",
-    "mailSended": "Confirmation Email sent, please check your email"
+    "mailSended": "確認メールが送られました、貴方の電子メールを確認してください"
 }

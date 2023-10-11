@@ -17,7 +17,7 @@
   "secure_desc": "貴方のデータや制御は常に安全です。",
   "open_source_title": "オープンソース",
   "open_source_desc": "ClassCat Second Brain のベースとなる Quivr はオープンソースです。",
-  "toastDismiss": "完了していません (dismiss)",
+  "toastDismiss": "dismiss",
   "email": "電子メール",
   "password": "パスワード",
   "or": "or",
