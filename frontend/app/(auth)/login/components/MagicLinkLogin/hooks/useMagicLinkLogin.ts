@@ -18,11 +18,13 @@ export const useMagicLinkLogin = ({
 
   const { publish } = useToast();
 
+  // masao : 11-oct-23 : localization
   const handleMagicLinkLogin = async () => {
     if (email === "") {
       publish({
         variant: "danger",
-        text: "Please enter your email address",
+        text: "貴方の電子メールアドレスを入力してください",
+        // text: "Please enter your email address",
       });
 
       return;
