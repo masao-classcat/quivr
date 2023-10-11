@@ -1,7 +1,7 @@
 {
   "title": "Chat with {{brain}}",
   "brain": "brain",
-  "keyboard_shortcuts": "Keyboard shortcuts",
+  "keyboard_shortcuts": "キーボード・ショートカット",
   "brains": "brains",
   "subtitle": "Talk to a language model about your uploaded data",
   "limit_reached": "You have reached the limit of requests, please try again later",
