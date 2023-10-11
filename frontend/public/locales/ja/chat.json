@@ -21,7 +21,7 @@
   "chatNameUpdated": "Chat name updated",
   "shortcut_select_brain": "@: 対話する brain の選択",
   "shortcut_select_file": "/: Select a file to talk to",
-  "shortcut_choose_prompt": "#: 　特定のプロンプトの選択",
+  "shortcut_choose_prompt": "#: 特定のプロンプトの選択",
   "shortcut_create_brain": "@+: Create a new brain",
   "shortcut_feed_brain": "/+: Feed a brain with knowledge",
   "shortcut_create_prompt": "#+: Create a new custom prompt",
