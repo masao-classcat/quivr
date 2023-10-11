@@ -18,6 +18,9 @@ def create_user_identity(id: UUID, openai_api_key: Optional[str]) -> UserIdentit
         .execute()
     )
     user_identity = response.data[0]
+
+    # masao : 12-oct-23 : merged commit 024dd5a
     return UserIdentity(
-        id=user_identity.user_id, openai_api_key=user_identity.openai_api_key  # type: ignore
+        id=user_identity.get('user_id'), openai_api_key=user_identity.get('openai_api_key')  # type: ignore
+        # id=user_identity.user_id, openai_api_key=user_identity.openai_api_key  # type: ignore
     )
