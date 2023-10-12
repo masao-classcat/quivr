@@ -11,6 +11,8 @@ export const useStreamText = ({
   enabled = true,
   shouldStream = true,
 }: UseStreamTextProps) => {
+
+  console.log("### debug > IN useStreamText (frontend/userStream.txt)");
   const [streamingText, setStreamingText] = useState<string>("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
