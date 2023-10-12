@@ -385,11 +385,23 @@ async def create_stream_question_handler(
                 prompt_id=chat_question.prompt_id,
             )
 
-        print("streaming")
+        #print("streaming")
+        # masao : 12-oct-23 : debug
+        buf = ""
+        try:
+            buf = gpt_answer_generator.generate_stream(chat_id, chat_question),
+        except Exception as e:
+            log.debug(e)
+
         return StreamingResponse(
-            gpt_answer_generator.generate_stream(chat_id, chat_question),
+            buf,
             media_type="text/event-stream",
         )
+
+        #return StreamingResponse(
+        #    gpt_answer_generator.generate_stream(chat_id, chat_question),
+        #    media_type="text/event-stream",
+        #)
 
     except HTTPException as e:
         raise e
