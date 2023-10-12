@@ -2,7 +2,7 @@ from uuid import UUID
 
 from auth import AuthBearer, get_current_user
 from fastapi import APIRouter, Depends, Query
-from logger import get_logger
+#from logger import get_logger
 from models import Brain, UserIdentity
 from repository.files.delete_file import delete_file_from_storage
 from repository.files.generate_file_signed_url import generate_file_signed_url
@@ -16,7 +16,20 @@ from routes.authorizations.brain_authorization import (
 )
 
 knowledge_router = APIRouter()
-logger = get_logger(__name__)
+
+
+from logging import getLogger, StreamHandler, DEBUG
+
+logger = getLogger(__name__)
+handler = StreamHandler()
+handler.setLevel(DEBUG)
+logger.setLevel(DEBUG)
+logger.addHandler(handler)
+logger.propagate = False
+
+#logger.debug('hello')
+
+#logger = get_logger(__name__)
 
 
 @knowledge_router.get(
@@ -33,10 +46,12 @@ async def list_knowledge_in_brain_endpoint(
     validate_brain_authorization(brain_id=brain_id, user_id=current_user.id)
 
     knowledges = get_all_knowledge(brain_id)
-    print(type(knowledges))
-    logger.info("type of knowledge", type(knowledges))
-    logger.info(len(knowledges))    
-    logger.info("List of knowledge from knowledge table", knowledges)
+
+    logger.debug(f"type of knowledges {type(knowledges)}")
+    logger.debug(f"len of knowledges {len(knowledges)}")
+    logger.debug(f"knowledges {knowledges}")
+    
+    #logger.info("List of knowledge from knowledge table", knowledges)
 
     return {"knowledges": knowledges}
 
