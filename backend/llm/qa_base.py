@@ -221,6 +221,9 @@ class QABaseBrainPicking(BaseBrainPicking):
         callback = AsyncIteratorCallbackHandler()
         self.callbacks = [callback]
 
+        # masao : 12-oct-23
+        logger.debug(">> debug > IN generate_stream (backend/llm/qa_base.py)")
+
         answering_llm = self._create_llm(
             model=self.model,
             streaming=True,
@@ -302,7 +305,7 @@ class QABaseBrainPicking(BaseBrainPicking):
         )
 
         # masao : 12-oct-23
-        logger.debug(">> debug > generate_stream (backend/llm/qa_base.py)")
+        #logger.debug(">> debug > generate_stream (backend/llm/qa_base.py)")
         async for token in callback.aiter():
             logger.info("Token: %s", token)
             response_tokens.append(token)
