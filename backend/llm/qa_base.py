@@ -229,6 +229,22 @@ class QABaseBrainPicking(BaseBrainPicking):
         # masao : 12-oct-23
         logger.debug(">> debug > IN generate_stream (backend/llm/qa_base.py)")
 
+        ### debug ###
+        async def wrap_done(wrapped_fn: Coroutine, event: asyncio.Event):
+            try:
+                await wrapped_fn
+            except Exception as e:
+                # TODO: Error Handling
+                print(f"Caught exception: {e}")
+            finally:
+                # これがないとエラーが起きた際にeventが終了しない
+                event.set()
+
+        task = asyncio.create_task(
+            wrap_done(fn, callback.done),
+        )
+        ###
+
         answering_llm = self._create_llm(
             model=self.model,
             streaming=True,   # False にすると動作しない。
@@ -319,7 +335,7 @@ class QABaseBrainPicking(BaseBrainPicking):
 
             try:
                 buf = json.dumps(streamed_chat_history.dict())
-                yield f"data: {buf}\n\n"
+                yield f"data: {buf}"
             except Exception as e:
                 logger.debug(e)
 
@@ -327,6 +343,8 @@ class QABaseBrainPicking(BaseBrainPicking):
 
         await run
         assistant = "".join(response_tokens)
+
+        # ここではきちんと全文取得できている。
         logger.debug(f"assistant message : {assistant}")
 
         update_message_by_id(
