@@ -184,6 +184,9 @@ async def create_question_handler(
     """
     Add a new question to the chat.
     """
+    # masao : 12-oct-23 : debug
+    logger.debug('>> debug > 12-oct-23')
+
     if brain_id:
         validate_brain_authorization(
             brain_id=brain_id,
@@ -229,7 +232,7 @@ async def create_question_handler(
         or not chat_question.max_tokens
     ):
         # TODO: create ChatConfig class (pick config from brain or user or chat) and use it here
-        chat_question.model = chat_question.model or brain.model or "gpt-3.5-turbo"
+        chat_question.model = chat_question.model or brain.model or "gpt-3.5-turbo-16k"
         chat_question.temperature = (
             chat_question.temperature or brain.temperature or 0.1
         )
@@ -237,12 +240,14 @@ async def create_question_handler(
 
     try:
         check_user_requests_limit(current_user)
-        is_model_ok = (brain_details or chat_question).model in userSettings.get("models", ["gpt-3.5-turbo"])  # type: ignore
+        is_model_ok = (brain_details or chat_question).model in userSettings.get("models", ["gpt-3.5-turbo-16k"])  # type: ignore
+
+        logger.debug(f"is_model_ok : {is_model_ok}")
         gpt_answer_generator: HeadlessQA | OpenAIBrainPicking
         if brain_id:
             gpt_answer_generator = OpenAIBrainPicking(
                 chat_id=str(chat_id),
-                model=chat_question.model if is_model_ok else "gpt-3.5-turbo",  # type: ignore
+                model=chat_question.model if is_model_ok else "gpt-3.5-turbo-16k",  # type: ignore
                 max_tokens=chat_question.max_tokens,
                 temperature=chat_question.temperature,
                 brain_id=str(brain_id),
@@ -251,7 +256,7 @@ async def create_question_handler(
             )
         else:
             gpt_answer_generator = HeadlessQA(
-                model=chat_question.model if is_model_ok else "gpt-3.5-turbo",  # type: ignore
+                model=chat_question.model if is_model_ok else "gpt-3.5-turbo-16k",  # type: ignore
                 temperature=chat_question.temperature,
                 max_tokens=chat_question.max_tokens,
                 user_openai_api_key=current_user.openai_api_key,
@@ -321,7 +326,7 @@ async def create_stream_question_handler(
         or not chat_question.max_tokens
     ):
         # TODO: create ChatConfig class (pick config from brain or user or chat) and use it here
-        chat_question.model = chat_question.model or brain.model or "gpt-3.5-turbo"
+        chat_question.model = chat_question.model or brain.model or "gpt-3.5-turbo-16k"
         chat_question.temperature = chat_question.temperature or brain.temperature or 0
         chat_question.max_tokens = chat_question.max_tokens or brain.max_tokens or 256
 
@@ -331,13 +336,13 @@ async def create_stream_question_handler(
         gpt_answer_generator: HeadlessQA | OpenAIBrainPicking
         # TODO check if model is in the list of models available for the user
 
-        print(userSettings.get("models", ["gpt-3.5-turbo"]))  # type: ignore
-        is_model_ok = (brain_details or chat_question).model in userSettings.get("models", ["gpt-3.5-turbo"])  # type: ignore
+        print(userSettings.get("models", ["gpt-3.5-turbo-16k"]))  # type: ignore
+        is_model_ok = (brain_details or chat_question).model in userSettings.get("models", ["gpt-3.5-turbo-16k"])  # type: ignore
 
         if brain_id:
             gpt_answer_generator = OpenAIBrainPicking(
                 chat_id=str(chat_id),
-                model=(brain_details or chat_question).model if is_model_ok else "gpt-3.5-turbo",  # type: ignore
+                model=(brain_details or chat_question).model if is_model_ok else "gpt-3.5-turbo-16k",  # type: ignore
                 max_tokens=(brain_details or chat_question).max_tokens,  # type: ignore
                 temperature=(brain_details or chat_question).temperature,  # type: ignore
                 brain_id=str(brain_id),
@@ -347,7 +352,7 @@ async def create_stream_question_handler(
             )
         else:
             gpt_answer_generator = HeadlessQA(
-                model=chat_question.model if is_model_ok else "gpt-3.5-turbo",  # type: ignore
+                model=chat_question.model if is_model_ok else "gpt-3.5-turbo-16k",  # type: ignore
                 temperature=chat_question.temperature,
                 max_tokens=chat_question.max_tokens,
                 user_openai_api_key=current_user.openai_api_key,  # pyright: ignore reportPrivateUsage=none

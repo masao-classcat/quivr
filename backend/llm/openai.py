@@ -32,6 +32,7 @@ class OpenAIBrainPicking(QABaseBrainPicking):
         Initialize the BrainPicking class by setting embeddings, supabase client, vector store, language model and chains.
         :return: OpenAIBrainPicking instance
         """
+        logger.debug(">> debug > IN OpenAIBrainPicking (backend/llm/openai.py)")
         super().__init__(
             model=model,
             brain_id=brain_id,
