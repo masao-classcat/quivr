@@ -94,9 +94,9 @@ class File(BaseModel):
         logger.debug(f">> debug > chunk_size ; {self.chunk_size}, chunk_overlap : {self.chunk_overlap}")
 
         # masao : 12-oct-23 : change text spliltter.
+        # separator is not available.
         logger.debug (">> debug > use RecursiveCharacterTextSplitter")
         text_splitter = RecursiveCharacterTextSplitter(
-            separator = "\n\n",
             chunk_size = self.chunk_size,
             chunk_overlap = self.chunk_overlap
         )
