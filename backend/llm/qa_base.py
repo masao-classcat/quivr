@@ -167,7 +167,7 @@ class QABaseBrainPicking(BaseBrainPicking):
             question_generator=LLMChain(
                 llm=self._create_llm(model=self.model), prompt=CONDENSE_QUESTION_PROMPT
             ),
-            verbose=False,
+            verbose=True, # False,
             rephrase_question=False,
         )
 
@@ -228,7 +228,7 @@ class QABaseBrainPicking(BaseBrainPicking):
 
         answering_llm = self._create_llm(
             model=self.model,
-            streaming=True,
+            streaming=False, # True,
             callbacks=self.callbacks,
             max_tokens=self.max_tokens,
         )
