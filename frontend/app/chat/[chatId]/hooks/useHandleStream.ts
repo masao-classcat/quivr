@@ -11,7 +11,7 @@ export const useHandleStream = () => {
   ): Promise<void> => {
     const decoder = new TextDecoder("utf-8");
 
-    console.log(">> debug > IN handleStream (frontend/app/chat/[]")
+    console.log("### debug > IN handleStream (frontend/app/chat/[]")
     const handleStreamRecursively = async () => {
       const { done, value } = await reader.read();
 
