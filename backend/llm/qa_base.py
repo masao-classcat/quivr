@@ -216,6 +216,9 @@ class QABaseBrainPicking(BaseBrainPicking):
             }
         )
 
+    ###
+    ### 回答をストリーミングで生成
+    ###
     async def generate_stream(
         self, chat_id: UUID, question: ChatQuestion
     ) -> AsyncIterable:
@@ -228,7 +231,7 @@ class QABaseBrainPicking(BaseBrainPicking):
 
         answering_llm = self._create_llm(
             model=self.model,
-            streaming=False, # True,
+            streaming=True,   # False にすると動作しない。
             callbacks=self.callbacks,
             max_tokens=self.max_tokens,
         )
@@ -313,9 +316,10 @@ class QABaseBrainPicking(BaseBrainPicking):
             time.sleep(0.005)
             response_tokens.append(token)
             streamed_chat_history.assistant = token
+
             try:
                 buf = json.dumps(streamed_chat_history.dict())
-                yield f"data: {buf}"
+                yield f"data: {buf}\n\n"
             except Exception as e:
                 logger.debug(e)
 

@@ -347,8 +347,6 @@ async def create_stream_question_handler(
         chat_question.temperature = chat_question.temperature or brain.temperature or 0
         chat_question.max_tokens = chat_question.max_tokens or brain.max_tokens or 256
 
-
-
     try:
         logger.info(f"Streaming request for {chat_question.model}")
         check_user_requests_limit(current_user)
@@ -366,22 +364,22 @@ async def create_stream_question_handler(
             logger.debug(f"brain_id {brain_id}")
             gpt_answer_generator = OpenAIBrainPicking(
                 chat_id=str(chat_id),
-                model=(brain_details or chat_question).model if is_model_ok else "gpt-3.5-turbo-16k",  # type: ignore
+                model=(brain_details or chat_question).model if is_model_ok else "gpt-3.5-turbo",  # type: ignore
                 max_tokens=(brain_details or chat_question).max_tokens,  # type: ignore
                 temperature=(brain_details or chat_question).temperature,  # type: ignore
                 brain_id=str(brain_id),
                 user_openai_api_key=current_user.openai_api_key,  # pyright: ignore reportPrivateUsage=none
-                streaming=False, #True,
+                streaming=True,
                 prompt_id=chat_question.prompt_id,
             )
         else:
             gpt_answer_generator = HeadlessQA(
-                model=chat_question.model if is_model_ok else "gpt-3.5-turbo-16k",  # type: ignore
+                model=chat_question.model if is_model_ok else "gpt-3.5-turbo",  # type: ignore
                 temperature=chat_question.temperature,
                 max_tokens=chat_question.max_tokens,
                 user_openai_api_key=current_user.openai_api_key,  # pyright: ignore reportPrivateUsage=none
                 chat_id=str(chat_id),
-                streaming=False, #True,
+                streaming=True,
                 prompt_id=chat_question.prompt_id,
             )
 
