@@ -304,6 +304,7 @@ async def create_stream_question_handler(
     | None = Query(..., description="The ID of the brain"),
     current_user: UserIdentity = Depends(get_current_user),
 ) -> StreamingResponse:
+    # ここにきている。
     logger.debug(">> debug > IN create_stream_question_handler (backend/routes/chat_routes.py)");
 
     if brain_id:

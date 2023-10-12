@@ -50,6 +50,8 @@ export const useQuestion = (): UseChatService => {
     };
     const body = JSON.stringify(chatQuestion);
 
+    console.log(">> debug > useQuestion::addStreamQuestion (frontend/app/chat/[chatId]/hooks/useQuestion.ts)")
+
     try {
       const response = await fetchInstance.post(
         `/chat/${chatId}/question/stream?brain_id=${currentBrain?.id ?? ""}`,
