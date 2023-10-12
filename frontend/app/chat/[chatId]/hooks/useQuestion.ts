@@ -22,6 +22,7 @@ export const useQuestion = (): UseChatService => {
   const { handleStream } = useHandleStream();
 
   const handleFetchError = async (response: Response) => {
+    console.log("### useQuestion::handleFetchError (frontend/handleFetchError) ");
     if (response.status === 429) {
       publish({
         variant: "danger",

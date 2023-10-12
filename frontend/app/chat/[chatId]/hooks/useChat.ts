@@ -35,7 +35,11 @@ export const useChat = () => {
   const { addStreamQuestion } = useQuestion();
   const { t } = useTranslation(["chat"]);
 
+
+
   const addQuestion = async (question: string, callback?: () => void) => {
+    console.log("### debug > useChat::addQuestion");
+
     if (question === "") {
       publish({
         variant: "danger",
