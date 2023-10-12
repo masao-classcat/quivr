@@ -290,6 +290,8 @@ async def create_stream_question_handler(
     | None = Query(..., description="The ID of the brain"),
     current_user: UserIdentity = Depends(get_current_user),
 ) -> StreamingResponse:
+    logger.debug(">> debug > IN create_stream_question_handler (backend/routes/chat_routes.py)");
+
     if brain_id:
         validate_brain_authorization(
             brain_id=brain_id,
@@ -330,16 +332,23 @@ async def create_stream_question_handler(
         chat_question.temperature = chat_question.temperature or brain.temperature or 0
         chat_question.max_tokens = chat_question.max_tokens or brain.max_tokens or 256
 
+
+
     try:
         logger.info(f"Streaming request for {chat_question.model}")
         check_user_requests_limit(current_user)
         gpt_answer_generator: HeadlessQA | OpenAIBrainPicking
         # TODO check if model is in the list of models available for the user
 
-        print(userSettings.get("models", ["gpt-3.5-turbo-16k"]))  # type: ignore
         is_model_ok = (brain_details or chat_question).model in userSettings.get("models", ["gpt-3.5-turbo-16k"])  # type: ignore
 
+        logger.debug(f">> debug > is_model_ok ; {is_model_ok}")
+        debug_model=(brain_details or chat_question).model if is_model_ok else "gpt-3.5-turbo-16k"
+        logger.debug(f"model : {debug_model}")
+        logger.debug(f"max_tokens : {(brain_details or chat_question).max_tokens}")
+
         if brain_id:
+            logger.debug(f"brain_id {brain_id}")
             gpt_answer_generator = OpenAIBrainPicking(
                 chat_id=str(chat_id),
                 model=(brain_details or chat_question).model if is_model_ok else "gpt-3.5-turbo-16k",  # type: ignore
