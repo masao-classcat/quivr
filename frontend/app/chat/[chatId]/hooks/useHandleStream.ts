@@ -11,7 +11,10 @@ export const useHandleStream = () => {
   ): Promise<void> => {
     const decoder = new TextDecoder("utf-8");
 
+    const sleep = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
+  
     const handleStreamRecursively = async () => {
+      // ここが繰り返し呼ばれる。debug tool をかませるとエラーが起きない。
       console.log("### debug > IN handleStream::handleStreamRecursively (frontend/app/chat/[chatId]/hooks/useHandleStream.js")
 
       const { done, value } = await reader.read();
@@ -26,10 +29,16 @@ export const useHandleStream = () => {
         .split("data: ")
         .filter(Boolean);
 
+      // ここで処理しているのは間違いない。sleep 入れる?
       dataStrings.forEach((data) => {
-        console.log("going to json.parse");
-        const parsedData = JSON.parse(data) as ChatMessage;
-        updateStreamingHistory(parsedData);
+        sleep(10); //ms
+        console.log(">> debug > going to json.parse");
+        try {
+          const parsedData = JSON.parse(data) as ChatMessage;
+          updateStreamingHistory(parsedData);
+        } catch (error) {
+          console.log(error);
+        }
       });
 
       await handleStreamRecursively();

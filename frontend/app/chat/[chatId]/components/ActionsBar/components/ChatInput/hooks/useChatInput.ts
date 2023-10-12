@@ -8,6 +8,7 @@ export const useChatInput = () => {
   const { addQuestion, generatingAnswer, chatId } = useChat();
 
   const submitQuestion = () => {
+    console.log("### debug > useChatInput::submitQuestion (frontend/app/chat/[chatId]/components/ActionBar/components/ChatInput/hooks/useChatInput.ts)")
     if (!generatingAnswer) {
       void addQuestion(message, () => setMessage(""));
     }
