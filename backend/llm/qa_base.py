@@ -32,6 +32,8 @@ from vectorstore.supabase import CustomSupabaseVectorStore
 from .base import BaseBrainPicking
 from .prompts.CONDENSE_PROMPT import CONDENSE_QUESTION_PROMPT
 
+import time
+
 #logger = get_logger(__name__)
 
 from logging import getLogger, StreamHandler, DEBUG
@@ -308,6 +310,7 @@ class QABaseBrainPicking(BaseBrainPicking):
         #logger.debug(">> debug > generate_stream (backend/llm/qa_base.py)")
         async for token in callback.aiter():
             #logger.info("Token: %s", token)
+            time.sleep(0.005)
             response_tokens.append(token)
             streamed_chat_history.assistant = token
             try:
