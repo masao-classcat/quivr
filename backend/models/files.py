@@ -5,15 +5,25 @@ from uuid import UUID
 
 from fastapi import UploadFile
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from logger import get_logger
+
+# masao : 12-oct-23
+#from logger import get_logger
+from logging import getLogger, StreamHandler, DEBUG
+
 from models.brains import Brain
 from models.databases.supabase.supabase import SupabaseDB
 from models.settings import get_supabase_db
 from pydantic import BaseModel
 from utils.file import compute_sha1_from_file
 
-logger = get_logger(__name__)
+#logger = get_logger(__name__)
 
+logger = getLogger(__name__)
+handler = StreamHandler()
+handler.setLevel(DEBUG)
+logger.setLevel(DEBUG)
+logger.addHandler(handler)
+logger.propagate = False
 
 class File(BaseModel):
     id: Optional[UUID] = None
@@ -81,8 +91,11 @@ class File(BaseModel):
 
         os.remove(tmp_file.name)
 
+        logger.debug(f">> debug > : chunk_size ; {self.chunk_size}, chunk_overlap : {self.chunk_overlap}")
+
         text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-            chunk_size=self.chunk_size, chunk_overlap=self.chunk_overlap
+            chunk_size=self.chunk_size,
+            chunk_overlap=self.chunk_overlap
         )
 
         self.documents = text_splitter.split_documents(documents)
