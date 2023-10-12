@@ -314,10 +314,9 @@ class QABaseBrainPicking(BaseBrainPicking):
         #logger.debug(">> debug > generate_stream (backend/llm/qa_base.py)")
         async for token in callback.aiter():
             #logger.info("Token: %s", token)
-            #time.sleep(0.005)
             if not token:
+                time.sleep(0.01)
                 continue
-            await asyncio.sleep(0)
 
             response_tokens.append(token)
             streamed_chat_history.assistant = token
