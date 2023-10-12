@@ -390,7 +390,7 @@ async def create_stream_question_handler(
         )
 
     except HTTPException as e:
-        log.debug(f"HTTPException {e}")
+        logger.debug(f"HTTPException {e}")
         raise e
 
 
