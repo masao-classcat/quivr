@@ -14,6 +14,7 @@ export const useHandleStream = () => {
     const sleep = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
   
     const handleStreamRecursively = async () => {
+      await sleep(10); //ms
       // ここが繰り返し呼ばれる。debug tool をかませるとエラーが起きない。
       console.log("### debug > IN handleStream::handleStreamRecursively (frontend/app/chat/[chatId]/hooks/useHandleStream.js")
 
@@ -31,7 +32,6 @@ export const useHandleStream = () => {
 
       // ここで処理しているのは間違いない。sleep 入れる?
       dataStrings.forEach((data) => {
-        sleep(10); //ms
         console.log(">> debug > going to json.parse");
         try {
           const parsedData = JSON.parse(data) as ChatMessage;
