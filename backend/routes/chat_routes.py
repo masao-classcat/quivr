@@ -371,7 +371,7 @@ async def create_stream_question_handler(
                 temperature=(brain_details or chat_question).temperature,  # type: ignore
                 brain_id=str(brain_id),
                 user_openai_api_key=current_user.openai_api_key,  # pyright: ignore reportPrivateUsage=none
-                streaming=True,
+                streaming=False, #True,
                 prompt_id=chat_question.prompt_id,
             )
         else:
@@ -381,27 +381,15 @@ async def create_stream_question_handler(
                 max_tokens=chat_question.max_tokens,
                 user_openai_api_key=current_user.openai_api_key,  # pyright: ignore reportPrivateUsage=none
                 chat_id=str(chat_id),
-                streaming=True,
+                streaming=False, #True,
                 prompt_id=chat_question.prompt_id,
             )
 
-        #print("streaming")
         # masao : 12-oct-23 : debug
-        buf = ""
-        try:
-            buf = gpt_answer_generator.generate_stream(chat_id, chat_question),
-        except Exception as e:
-            log.debug(e)
-
         return StreamingResponse(
-            buf,
+            gpt_answer_generator.generate_stream(chat_id, chat_question),
             media_type="text/event-stream",
         )
-
-        #return StreamingResponse(
-        #    gpt_answer_generator.generate_stream(chat_id, chat_question),
-        #    media_type="text/event-stream",
-        #)
 
     except HTTPException as e:
         raise e
