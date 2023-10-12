@@ -310,7 +310,13 @@ class QABaseBrainPicking(BaseBrainPicking):
             logger.info("Token: %s", token)
             response_tokens.append(token)
             streamed_chat_history.assistant = token
-            yield f"data: {json.dumps(streamed_chat_history.dict())}"
+            try:
+                buf = json.dumps(streamed_chat_history.dict())
+                yield f"data: {buf}"
+            except Exception as e:
+                logger.debug(e)
+
+            #yield f"data: {json.dumps(streamed_chat_history.dict())}"
 
         await run
         assistant = "".join(response_tokens)
