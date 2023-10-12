@@ -216,6 +216,7 @@ class QABaseBrainPicking(BaseBrainPicking):
             }
         )
 
+
     ###
     ### 回答をストリーミングで生成
     ###
@@ -228,22 +229,6 @@ class QABaseBrainPicking(BaseBrainPicking):
 
         # masao : 12-oct-23
         logger.debug(">> debug > IN generate_stream (backend/llm/qa_base.py)")
-
-        ### debug ###
-        async def wrap_done(wrapped_fn: Coroutine, event: asyncio.Event):
-            try:
-                await wrapped_fn
-            except Exception as e:
-                # TODO: Error Handling
-                print(f"Caught exception: {e}")
-            finally:
-                # これがないとエラーが起きた際にeventが終了しない
-                event.set()
-
-        task = asyncio.create_task(
-            wrap_done(fn, callback.done),
-        )
-        ###
 
         answering_llm = self._create_llm(
             model=self.model,

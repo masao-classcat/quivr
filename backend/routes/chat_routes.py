@@ -258,7 +258,7 @@ async def create_question_handler(
             logger.debug('>> debug > call OpenAIBrainPicking')
             gpt_answer_generator = OpenAIBrainPicking(
                 chat_id=str(chat_id),
-                model=chat_question.model if is_model_ok else "gpt-3.5-turbo-16k",  # type: ignore
+                model=chat_question.model if is_model_ok else "gpt-3.5-turbo",  # type: ignore
                 max_tokens=chat_question.max_tokens,
                 temperature=chat_question.temperature,
                 brain_id=str(brain_id),
@@ -305,7 +305,7 @@ async def create_stream_question_handler(
     current_user: UserIdentity = Depends(get_current_user),
 ) -> StreamingResponse:
     # ここにきている。
-    logger.debug(">> debug > IN create_stream_question_handler (backend/routes/chat_routes.py)");
+    logger.debug("### debug > IN create_stream_question_handler (backend/routes/chat_routes.py)");
 
     if brain_id:
         validate_brain_authorization(
@@ -385,11 +385,12 @@ async def create_stream_question_handler(
 
         # masao : 12-oct-23 : debug
         return StreamingResponse(
-            gpt_answer_generator.generate_stream(chat_id, chat_question),
+            gpt_answer_generator.generate_stream(chat_id, chat_question),   # AsyncIterable を返す
             media_type="text/event-stream",
         )
 
     except HTTPException as e:
+        log.debug(f"HTTPException {e}")
         raise e
 
 
