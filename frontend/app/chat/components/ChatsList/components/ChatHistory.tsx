@@ -23,6 +23,7 @@ export const ChatHistory = (): JSX.Element => {
     isWithinLast30Days(new Date(chat.creation_time))
   );
 
+  // masao : 12-oct-23 : localization
   return (
     <div
       data-testid="chats-list-items"
@@ -30,7 +31,7 @@ export const ChatHistory = (): JSX.Element => {
     >
       {todayChats.length > 0 && (
         <div className="bg-gray-100 text-black rounded-md px-3 py-1 mt-2">
-          Today
+          今日
         </div>
       )}
       {todayChats.map((chat) => (
@@ -39,7 +40,7 @@ export const ChatHistory = (): JSX.Element => {
 
       {yesterdayChats.length > 0 && (
         <div className="bg-gray-100 text-black rounded-md px-3 py-1 mt-2">
-          Yesterday
+          昨日
         </div>
       )}
       {yesterdayChats.map((chat) => (
@@ -48,7 +49,7 @@ export const ChatHistory = (): JSX.Element => {
 
       {last7DaysChats.length > 0 && (
         <div className="bg-gray-100 text-black rounded-md px-3 py-1 mt-2">
-          Previous 7 Days
+          過去7日間
         </div>
       )}
       {last7DaysChats.map((chat) => (
@@ -57,7 +58,7 @@ export const ChatHistory = (): JSX.Element => {
 
       {last30DaysChats.length > 0 && (
         <div className="bg-gray-100 text-black rounded-md px-3 py-1 mt-2">
-          Previous 30 Days
+          過去30日間
         </div>
       )}
       {last30DaysChats.map((chat) => (

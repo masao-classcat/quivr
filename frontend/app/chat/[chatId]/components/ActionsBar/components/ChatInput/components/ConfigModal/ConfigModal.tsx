@@ -19,6 +19,7 @@ export const ConfigModal = (): JSX.Element => {
     accessibleModels,
   } = useConfigModal();
 
+  // masao : 12-oct-23 : localization
   return (
     <Modal
       Trigger={
@@ -30,8 +31,8 @@ export const ConfigModal = (): JSX.Element => {
           <MdSettings className="text-lg sm:text-xl lg:text-2xl" />
         </Button>
       }
-      title="Chat configuration"
-      desc="Adjust your chat settings"
+      title="チャット設定"
+      desc="チャット設定を調整します"
       isOpen={isConfigModalOpen}
       setOpen={setIsConfigModalOpen}
       CloseTrigger={<div />}
@@ -39,7 +40,7 @@ export const ConfigModal = (): JSX.Element => {
       <form className="mt-10 flex flex-col items-center gap-2">
         <fieldset className="w-full flex flex-col">
           <label className="flex-1 text-sm" htmlFor="model">
-            Model
+            モデル
           </label>
           <select
             id="model"
@@ -70,7 +71,7 @@ export const ConfigModal = (): JSX.Element => {
         </fieldset>
         <fieldset className="w-full flex mt-4">
           <label className="flex-1" htmlFor="tokens">
-            Max tokens: {maxTokens}
+            最大トークン数: {maxTokens}
           </label>
           <input
             type="range"
@@ -89,7 +90,7 @@ export const ConfigModal = (): JSX.Element => {
             setIsConfigModalOpen(false);
           }}
         >
-          Save
+          保存
           <MdCheck className="text-xl" />
         </Button>
       </form>
