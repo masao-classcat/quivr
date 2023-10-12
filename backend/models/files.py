@@ -91,12 +91,20 @@ class File(BaseModel):
 
         os.remove(tmp_file.name)
 
-        logger.debug(f">> debug > : chunk_size ; {self.chunk_size}, chunk_overlap : {self.chunk_overlap}")
+        logger.debug(f">> debug > chunk_size ; {self.chunk_size}, chunk_overlap : {self.chunk_overlap}")
 
-        text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-            chunk_size=self.chunk_size,
-            chunk_overlap=self.chunk_overlap
+        # masao : 12-oct-23 : change text spliltter.
+        logger.debug (">> debug > use RecursiveCharacterTextSplitter")
+        text_splitter = RecursiveCharacterTextSplitter(
+            separator = "\n\n",
+            chunk_size = self.chunk_size,
+            chunk_overlap = self.chunk_overlap
         )
+
+        #text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
+        #    chunk_size=self.chunk_size,
+        #    chunk_overlap=self.chunk_overlap
+        #)
 
         self.documents = text_splitter.split_documents(documents)
 
