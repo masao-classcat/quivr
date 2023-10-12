@@ -15,7 +15,7 @@ from langchain.prompts.chat import (
 )
 from llm.utils.get_prompt_to_use import get_prompt_to_use
 from llm.utils.get_prompt_to_use_id import get_prompt_to_use_id
-from logger import get_logger
+#from logger import get_logger
 from models.chats import ChatQuestion
 from models.databases.supabase.chats import CreateChatHistory
 from repository.brain import get_brain_by_id
@@ -32,7 +32,17 @@ from vectorstore.supabase import CustomSupabaseVectorStore
 from .base import BaseBrainPicking
 from .prompts.CONDENSE_PROMPT import CONDENSE_QUESTION_PROMPT
 
-logger = get_logger(__name__)
+#logger = get_logger(__name__)
+
+from logging import getLogger, StreamHandler, DEBUG
+
+logger = getLogger(__name__)
+handler = StreamHandler()
+handler.setLevel(DEBUG)
+logger.setLevel(DEBUG)
+logger.addHandler(handler)
+logger.propagate = False
+
 QUIVR_DEFAULT_PROMPT = "Your name is Quivr. You're a helpful assistant.  If you don't know the answer, just say that you don't know, don't try to make up an answer."
 
 

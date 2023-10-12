@@ -195,7 +195,7 @@ async def create_question_handler(
     Add a new question to the chat.
     """
     # masao : 12-oct-23 : debug
-    logger.debug('>> debug > 12-oct-23')
+    logger.debug('>> debug > IN create_question_handler (backend/routes/chat_routes.py)')
 
     if brain_id:
         validate_brain_authorization(
@@ -255,6 +255,7 @@ async def create_question_handler(
         logger.debug(f"is_model_ok : {is_model_ok}")
         gpt_answer_generator: HeadlessQA | OpenAIBrainPicking
         if brain_id:
+            logger.debug('>> debug > call OpenAIBrainPicking')
             gpt_answer_generator = OpenAIBrainPicking(
                 chat_id=str(chat_id),
                 model=chat_question.model if is_model_ok else "gpt-3.5-turbo-16k",  # type: ignore
@@ -265,6 +266,7 @@ async def create_question_handler(
                 prompt_id=chat_question.prompt_id,
             )
         else:
+            logger.debug('>> debug > call HeadlessQA')
             gpt_answer_generator = HeadlessQA(
                 model=chat_question.model if is_model_ok else "gpt-3.5-turbo-16k",  # type: ignore
                 temperature=chat_question.temperature,
@@ -275,6 +277,8 @@ async def create_question_handler(
             )
 
         chat_answer = gpt_answer_generator.generate_answer(chat_id, chat_question)
+
+        logger.debug(f"chat_answer is {chat_answer}")
 
         return chat_answer
     except HTTPException as e:
