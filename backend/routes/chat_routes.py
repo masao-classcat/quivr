@@ -242,7 +242,7 @@ async def create_question_handler(
         or not chat_question.max_tokens
     ):
         # TODO: create ChatConfig class (pick config from brain or user or chat) and use it here
-        chat_question.model = chat_question.model or brain.model or "gpt-3.5-turbo-16k"
+        chat_question.model = chat_question.model or brain.model or "gpt-3.5-turbo"
         chat_question.temperature = (
             chat_question.temperature or brain.temperature or 0.1
         )
@@ -250,7 +250,7 @@ async def create_question_handler(
 
     try:
         check_user_requests_limit(current_user)
-        is_model_ok = (brain_details or chat_question).model in userSettings.get("models", ["gpt-3.5-turbo-16k"])  # type: ignore
+        is_model_ok = (brain_details or chat_question).model in userSettings.get("models", ["gpt-3.5-turbo"])  # type: ignore
 
         logger.debug(f"is_model_ok : {is_model_ok}")
         gpt_answer_generator: HeadlessQA | OpenAIBrainPicking
@@ -268,7 +268,7 @@ async def create_question_handler(
         else:
             logger.debug('>> debug > call HeadlessQA')
             gpt_answer_generator = HeadlessQA(
-                model=chat_question.model if is_model_ok else "gpt-3.5-turbo-16k",  # type: ignore
+                model=chat_question.model if is_model_ok else "gpt-3.5-turbo",  # type: ignore
                 temperature=chat_question.temperature,
                 max_tokens=chat_question.max_tokens,
                 user_openai_api_key=current_user.openai_api_key,
@@ -343,7 +343,7 @@ async def create_stream_question_handler(
         or not chat_question.max_tokens
     ):
         # TODO: create ChatConfig class (pick config from brain or user or chat) and use it here
-        chat_question.model = chat_question.model or brain.model or "gpt-3.5-turbo-16k"
+        chat_question.model = chat_question.model or brain.model or "gpt-3.5-turbo"
         chat_question.temperature = chat_question.temperature or brain.temperature or 0
         chat_question.max_tokens = chat_question.max_tokens or brain.max_tokens or 256
 
@@ -353,10 +353,10 @@ async def create_stream_question_handler(
         gpt_answer_generator: HeadlessQA | OpenAIBrainPicking
         # TODO check if model is in the list of models available for the user
 
-        is_model_ok = (brain_details or chat_question).model in userSettings.get("models", ["gpt-3.5-turbo-16k"])  # type: ignore
+        is_model_ok = (brain_details or chat_question).model in userSettings.get("models", ["gpt-3.5-turbo"])  # type: ignore
 
         logger.debug(f">> debug > is_model_ok ; {is_model_ok}")
-        debug_model=(brain_details or chat_question).model if is_model_ok else "gpt-3.5-turbo-16k"
+        debug_model=(brain_details or chat_question).model if is_model_ok else "gpt-3.5-turbo"
         logger.debug(f"model : {debug_model}")
         logger.debug(f"max_tokens : {(brain_details or chat_question).max_tokens}")
 
