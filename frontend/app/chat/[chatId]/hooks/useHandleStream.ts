@@ -11,8 +11,9 @@ export const useHandleStream = () => {
   ): Promise<void> => {
     const decoder = new TextDecoder("utf-8");
 
-    console.log("### debug > IN handleStream (frontend/app/chat/[]")
     const handleStreamRecursively = async () => {
+      console.log("### debug > IN handleStream::handleStreamRecursively (frontend/app/chat/[chatId]/hooks/useHandleStream.js")
+
       const { done, value } = await reader.read();
 
       if (done) {
@@ -26,6 +27,7 @@ export const useHandleStream = () => {
         .filter(Boolean);
 
       dataStrings.forEach((data) => {
+        console.log("going to json.parse");
         const parsedData = JSON.parse(data) as ChatMessage;
         updateStreamingHistory(parsedData);
       });

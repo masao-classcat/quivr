@@ -32,6 +32,8 @@ export const useQuestion = (): UseChatService => {
       return;
     }
 
+    console.log("### useQuestion::handleFetchError (frontend/handleFetchError) ");
+
     const errorMessage = (await response.json()) as { detail: string };
     publish({
       variant: "danger",
