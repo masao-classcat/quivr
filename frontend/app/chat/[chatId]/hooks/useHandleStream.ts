@@ -11,10 +11,10 @@ export const useHandleStream = () => {
   ): Promise<void> => {
     const decoder = new TextDecoder("utf-8");
 
-    const sleep = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
+    // const sleep = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
   
     const handleStreamRecursively = async () => {
-      await sleep(10); //ms
+      // await sleep(10); //ms
       // ここが繰り返し呼ばれる。debug tool をかませるとエラーが起きない。
       console.log("### debug > IN handleStream::handleStreamRecursively (frontend/app/chat/[chatId]/hooks/useHandleStream.js")
 
@@ -38,6 +38,7 @@ export const useHandleStream = () => {
           updateStreamingHistory(parsedData);
         } catch (error) {
           console.log(error);
+          console.log(data);
         }
       });
 
