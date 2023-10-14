@@ -48,7 +48,7 @@ export const useHandleStream = () => {
           // エラーが起きる場合はデータが不十分である。
           // エラーが起きたことを示して、データを保存する。
           was_error = true;
-          buf = buf + data;
+          buf = buf + data.trim();
           
           console.log(error);
           console.log(data);

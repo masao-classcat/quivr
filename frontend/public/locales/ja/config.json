@@ -41,7 +41,7 @@
     "defaultBrainSet": "Brain set as default successfully",
     "nameRequired": "Name is required",
     "promptFieldsRequired": "Prompt title and content are required",
-    "brainUpdated": "Brain updated successfully",
+    "brainUpdated": "brain は正常に更新されました",
     "publicPrompts": "Pick in public prompts",
     "roleRequired": "You don't have the necessary role to access this tab 🧠💡🥲.",
     "requireAccess": "Please require access from the owner.",
