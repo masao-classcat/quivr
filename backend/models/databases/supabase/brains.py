@@ -8,14 +8,14 @@ from pydantic import BaseModel
 
 logger = get_logger(__name__)
 
-
+# masao : 14-oct-23 : localization
 class CreateBrainProperties(BaseModel):
     name: Optional[str] = "Default brain"
-    description: Optional[str] = "This is a description"
+    description: Optional[str] = "これは説明です"   # "This is a description"
     status: Optional[str] = "private"
     model: Optional[str]
     temperature: Optional[float] = 0.0
-    max_tokens: Optional[int] = 256
+    max_tokens: Optional[int] = 500   # 256
     openai_api_key: Optional[str] = None
     prompt_id: Optional[UUID] = None
 

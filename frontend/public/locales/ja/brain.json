@@ -1,7 +1,7 @@
 {
     "searchBrain": "brain の検索",
-    "selectBrain": "Select a brain please",
-    "brainCreated": "Brain created successfully",
+    "selectBrain": "brain を選択してください",
+    "brainCreated": "Brain は正常に作成されました",
     "newBrain": "新しい Brain の追加",
     "newBrainTitle": "新しい Brain の追加",
     "newBrainSubtitle": "貴方のデータ用の新しいスペースを作成する",
