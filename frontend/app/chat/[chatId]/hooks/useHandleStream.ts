@@ -30,8 +30,8 @@ export const useHandleStream = () => {
         .split("data: ")
         .filter(Boolean);
 
-      var was_error = false;
-      var buf = "";
+      let was_error = false;
+      let buf = "";
       // ここで処理しているのは間違いない。sleep 入れる?
       dataStrings.forEach((data) => {
         console.log(">> debug > going to json.parse");
