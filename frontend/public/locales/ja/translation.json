@@ -44,7 +44,7 @@
   "Viewer": "Viewer",
   "Editor": "Editor",
   "Owner": "Owner",
-  "saveButton": "Save",
+  "saveButton": "保存",
   "invalidUrl": "Invalid URL",
   "crawlButton": "Crawl"
 }

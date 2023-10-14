@@ -11,15 +11,15 @@ from models.settings import get_supabase_client, get_supabase_db
 
 logger = get_logger(__name__)
 
-
+# masao : 14-oct-23 : localization
 class Brain(BaseModel):
     id: Optional[UUID] = None
     name: Optional[str] = "Default brain"
-    description: Optional[str] = "This is a description"
+    description: Optional[str] = "これは説明です"   # "This is a description"
     status: Optional[str] = "private"
     model: Optional[str] = None
     temperature: Optional[float] = 0.0
-    max_tokens: Optional[int] = 256
+    max_tokens: Optional[int] = 500   # 256
     openai_api_key: Optional[str] = None
     files: List[Any] = []
     prompt_id: Optional[UUID] = None

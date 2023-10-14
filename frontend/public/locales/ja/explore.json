@@ -1,9 +1,9 @@
 {
   "title": "アップロード済みデータの探索",
-  "subtitle": "View, download or delete knowledge used by your brain",
-  "empty": "Oh No, 貴方の Brain は空っぽです。",
-  "noBrain": "Brain id not found",
-  "sessionNotFound": "User session not found",
+  "subtitle": "貴方の brain で使用される知識を表示、ダウンロードあるいは削除します",
+  "empty": "あらら... 貴方の Brain は空っぽです。",
+  "noBrain": "Brain id が見つかりません",
+  "sessionNotFound": "ユーザセッションが見つかりません",
   "deleted": "{{fileName}} deleted from brain {{brain}}",
   "errorDeleting": "Error deleting {{fileName}}",
   "view": "View",
@@ -11,5 +11,5 @@
   "notAvailable": "Not Available",
   "deleteConfirmTitle": "Confirm",
   "deleteConfirmText": "Do you really want to delete?",
-  "feed_brain_instructions": "To add knowledge to a brain, go to chat page then click on plus button on the left of the chat input"
+  "feed_brain_instructions": "知識を brain に追加するには、チャットページに移動してからチャット入力の左側のプラスボタンをクリックします"
 }
