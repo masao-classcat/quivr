@@ -1,7 +1,7 @@
 {
-  "title": "Explore uploaded data",
+  "title": "アップロード済みデータの探索",
   "subtitle": "View, download or delete knowledge used by your brain",
-  "empty": "Oh No, Your Brain is empty.",
+  "empty": "Oh No, 貴方の Brain は空っぽです。",
   "noBrain": "Brain id not found",
   "sessionNotFound": "User session not found",
   "deleted": "{{fileName}} deleted from brain {{brain}}",
