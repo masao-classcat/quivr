@@ -30,13 +30,26 @@ export const useHandleStream = () => {
         .split("data: ")
         .filter(Boolean);
 
+      var was_error = false;
+      var buf = "";
       // ここで処理しているのは間違いない。sleep 入れる?
       dataStrings.forEach((data) => {
         console.log(">> debug > going to json.parse");
         try {
+          if (was_error) {
+            console.log("prev error found, then concatenate prev data.")
+            data = buf + data;
+          }
           const parsedData = JSON.parse(data) as ChatMessage;
           updateStreamingHistory(parsedData);
+          was_error = false;
+          buf = "";
         } catch (error) {
+          // エラーが起きる場合はデータが不十分である。
+          // エラーが起きたことを示して、データを保存する。
+          was_error = true;
+          buf = buf + data;
+          
           console.log(error);
           console.log(data);
         }
