@@ -1,6 +1,6 @@
 import { Model, PaidModels } from "../types/brainConfig";
 
-// masao : 14-oct-23 : localization
+// masao : 14-oct-23 : default maxtokens
 export const defineMaxTokens = (model: Model | PaidModels): number => {
   //At the moment is evaluating only models from OpenAI
   switch (model) {
