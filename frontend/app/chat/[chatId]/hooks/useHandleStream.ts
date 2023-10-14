@@ -51,7 +51,7 @@ export const useHandleStream = () => {
           buf = buf + data.trim();
           
           console.log(error);
-          console.log(data);
+          // console.log(data);
         }
       });
 
