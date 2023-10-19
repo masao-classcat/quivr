@@ -2,7 +2,7 @@
     "title": "Upload Knowledge",
     "subtitle": "Text, document, spreadsheet, presentation, audio, video, and URLs supported",
     "drop": "Drop the files here...",
-    "webSite": "Insert website URL",
+    "webSite": "Web サイト URL のインサート",
     "success": "File uploaded successfully",
     "uploadFailed": "Failed to upload file: {{message}}",
     "maxSizeError": "File too big",
@@ -15,6 +15,6 @@
     "selectBrainFirst": "You need to select a brain first. 🧠💡🥲",
     "missingNecessaryRole": "You don't have the necessary role to upload content to the selected brain. 🧠💡🥲",
     "invalidFileType": "Invalid file type",
-    "feed_form_submit_button":"私の brain に送信します",
-    "selected_brain_select_label":"brain を選択してください"
+    "feed_form_submit_button": "私の brain に送信する",
+    "selected_brain_select_label": "brain を選択してください"
 }

@@ -32,3 +32,7 @@ RUN pip install --no-cache-dir -r requirements.txt --timeout 200
 COPY . .
 
 CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "5050", "--workers", "6"]
+# CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "5050", "--workers", "6", "--ssl-keyfile", "/letsencrypt/live/chatbot.classcat.com/privkey.pem", "--ssl-certfile", "/letsencrypt/live/chatbot.classcat.com/fullchain.pem"]
+
+
+### EOF ###

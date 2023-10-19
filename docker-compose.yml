@@ -22,19 +22,20 @@ services:
     restart: always
     volumes:
       - ./backend/:/code/
+      # - /etc/letsencrypt/:/letsencrypt/
     depends_on:
       - redis
       - worker
     ports:
       - 5050:5050
-    
+
   redis:
     image: redis:latest
     container_name: redis
     restart: always
     ports:
       - 6379:6379
-  
+
   worker:
     env_file:
       - ./backend/.env
@@ -48,8 +49,7 @@ services:
       - redis
     volumes:
       - ./backend/:/code/
-    
-    
+
   flower:
     env_file:
       - ./backend/.env
