@@ -6,8 +6,8 @@ import Button from "@/lib/components/ui/Button";
 import Card from "@/lib/components/ui/Card";
 import Field from "@/lib/components/ui/Field";
 import PageHeading from "@/lib/components/ui/PageHeading";
-import { useSignUp } from "./hooks/useSignUp";
 import { useTranslation } from "react-i18next";
+import { useSignUp } from "./hooks/useSignUp";
 
 export default function SignUp() {
   const { handleSignUp, isPending, email, password, setEmail, setPassword } =
@@ -37,6 +37,15 @@ export default function SignUp() {
             />
             <Field
               name="password"
+              required
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder={t("password")}
+              data-testid="password-field"
+            />
+            <Field
+              name="password2"
               required
               type="password"
               value={password}
