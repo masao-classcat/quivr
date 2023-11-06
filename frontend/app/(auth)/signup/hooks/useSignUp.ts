@@ -10,7 +10,7 @@ export const useSignUp = () => {
   const { supabase } = useSupabase();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {password2, setPassword2} = useState("");
+  const [password2, setPassword2] = useState("");
   const [isPending, setIsPending] = useState(false);
   const { track } = useEventTracking();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -45,6 +45,8 @@ export const useSignUp = () => {
     setEmail,
     password,
     setPassword,
+    password2,
+    setPassword2,
     isPending,
     email,
   };
