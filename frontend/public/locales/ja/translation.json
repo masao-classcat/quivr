@@ -20,6 +20,7 @@
   "toastDismiss": "閉じる",
   "email": "電子メール",
   "password": "パスワード",
+  "password2": "パスワード (確認用)",
   "or": "or",
   "and": "and",
   "loginButton": "ログイン",

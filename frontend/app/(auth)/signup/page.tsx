@@ -48,9 +48,9 @@ export default function SignUp() {
               name="password2"
               required
               type="password"
-              value={password}
+              value={password2}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder={t("password")}
+              placeholder={t("password2")}
               data-testid="password-field"
             />
             <div className="flex flex-col items-center justify-center mt-2 gap-2">
