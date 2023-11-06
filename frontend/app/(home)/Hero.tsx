@@ -45,7 +45,7 @@ const Hero = (): JSX.Element => {
         className="top-24 -z-0 flex flex-col gap-2 items-center justify-center pt-24"
       >
         <h1 className="text-5xl sm:text-7xl font-bold max-w-lg sm:max-w-xl">
-          <span className="text-primary">ClassCat&reg; Second Brain</span>
+          <span className="text-primary">ClassCat&reg; Chatbot</span>
           <br/><small>{t("title.short")}</small>
         </h1>
         <p className="text-base max-w-sm text-gray-500 mb-5 sm:mb-10">
