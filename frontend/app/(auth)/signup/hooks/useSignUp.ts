@@ -30,6 +30,7 @@ export const useSignUp = () => {
         variant: "danger",
         text: t("errorSignUp", { errorMessage: "confirmation password mismatch." }),
       });
+
       return;
     }
 
