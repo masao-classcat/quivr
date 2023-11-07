@@ -10,7 +10,7 @@ export const useSignUp = () => {
   const { supabase } = useSupabase();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isPending, setIsPending] = useState(false);
   const { track } = useEventTracking();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -20,6 +20,9 @@ export const useSignUp = () => {
   const handleSignUp = async () => {
     void track("SIGNUP");
     setIsPending(true);
+    console.log(password);
+    console.log(confirmPassword);
+
     const { error } = await supabase.auth.signUp({
       email: email,
       password: password,
@@ -42,12 +45,12 @@ export const useSignUp = () => {
 
   return {
     handleSignUp,
+    email,
     setEmail,
     password,
     setPassword,
-    password2,
-    setPassword2,
+    confirmPassword,
+    setConfirmPassword,
     isPending,
-    email,
   };
 };

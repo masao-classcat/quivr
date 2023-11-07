@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { useSignUp } from "./hooks/useSignUp";
 
 export default function SignUp() {
-  const { handleSignUp, isPending, email, password, setEmail, setPassword, password2, setPassword2, } =
+  const { handleSignUp, email, password, setEmail, setPassword, confirmPassword, setConfirmPassword, isPending,} =
     useSignUp();
   const {t} = useTranslation(["translation","signUp"]);
   return (
@@ -45,12 +45,12 @@ export default function SignUp() {
               data-testid="password-field"
             />
             <Field
-              name="password2"
+              name="confirmPassword"
               required
               type="password"
-              value={password2}
-              onChange={(e) => setPassword2(e.target.value)}
-              placeholder={t("password2")}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder={t("confirm_password")}
               data-testid="password-field"
             />
             <div className="flex flex-col items-center justify-center mt-2 gap-2">
