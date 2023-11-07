@@ -50,7 +50,7 @@ export default function SignUp() {
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder={t("confirm_password")}
+              placeholder={t("password") + " (confirm)"}
               data-testid="password-field"
             />
             <div className="flex flex-col items-center justify-center mt-2 gap-2">
