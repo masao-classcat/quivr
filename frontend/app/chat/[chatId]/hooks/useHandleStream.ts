@@ -30,11 +30,13 @@ export const useHandleStream = () => {
         .split("data: ")
         .filter(Boolean);
 
+      // masao
       let was_error = false;
       let buf = "";
       // ここで処理しているのは間違いない。sleep 入れる?
       dataStrings.forEach((data) => {
         console.log(">> debug > going to json.parse");
+        data = data.trim();
         try {
           if (was_error) {
             console.log("prev error found, then concatenate prev data.")
@@ -47,8 +49,12 @@ export const useHandleStream = () => {
         } catch (error) {
           // エラーが起きる場合はデータが不十分である。
           // エラーが起きたことを示して、データを保存する。
-          was_error = true;
-          buf = buf + data.trim();
+          if (was_error) {
+            buf = data;
+          } else {
+            was_error = true;
+            buf = data;
+          }
           
           console.log(error);
           // console.log(data);
