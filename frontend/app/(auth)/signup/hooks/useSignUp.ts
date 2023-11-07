@@ -23,6 +23,16 @@ export const useSignUp = () => {
     console.log(password);
     console.log(confirmPassword);
 
+    // masao : 08-nov-23
+    if (password != confirmPassword) {
+      console.error("Error signing up:", "confirmation password mismatch.");
+      publish({
+        variant: "danger",
+        text: t("errorSignUp", { errorMessage: "confirmation password mismatch." }),
+      });
+      return;
+    }
+
     const { error } = await supabase.auth.signUp({
       email: email,
       password: password,
