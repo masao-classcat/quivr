@@ -24,7 +24,7 @@ export const useSignUp = () => {
     console.log(confirmPassword);
 
     // masao : 08-nov-23
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       console.error("Error signing up:", "confirmation password mismatch.");
       publish({
         variant: "danger",
