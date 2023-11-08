@@ -38,12 +38,12 @@ export const useHandleStream = () => {
       dataStrings.forEach((data) => {
         // ここのデータは json なので注意。単なる文字列でないから concatenate できない。
         // 中途半端な json
-        console.log(">> debug > going to json.parse");
+        console.log(">> debug > call JSON.parse to convert data chunk.");
         let data_chunk = data.trim(); // このデータは json
         if (was_intermidiate_json) {
           data_chunk = intermidiate_json + data_chunk;
         }
-        console.log(data_chunk);
+        // console.log(data_chunk);
         try {
           // 取り敢えず json に変換してみるが、ダメな場合は中途半端な json
           const parsedData = JSON.parse(data_chunk) as ChatMessage;
