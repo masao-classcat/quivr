@@ -31,33 +31,31 @@ export const useHandleStream = () => {
         .filter(Boolean);
 
       // masao
-      let was_error = false;
-      let buf = "";
+      let was_intermidiate_json = false;
+      let intermidiate_json = "";
+
       // ここで処理しているのは間違いない。sleep 入れる?
       dataStrings.forEach((data) => {
+        // ここのデータは json なので注意。単なる文字列でないから concatenate できない。
+        // 中途半端な json
         console.log(">> debug > going to json.parse");
-        data = data.trim();
+        let data_chunk = data.trim(); // このデータは json
+        if (was_intermidiate_json) {
+          data_chunk = intermidiate_json + data_chunk;
+        }
+        console.log(data_chunk);
         try {
-          if (was_error) {
-            console.log("prev error found, then concatenate prev data.")
-            data = buf + data;
-          }
-          const parsedData = JSON.parse(data) as ChatMessage;
+          // 取り敢えず json に変換してみるが、ダメな場合は中途半端な json
+          const parsedData = JSON.parse(data_chunk) as ChatMessage;
           updateStreamingHistory(parsedData);
-          was_error = false;
-          buf = "";
+          // 成功すればクリア
+          was_intermidiate_json = false;
+          intermidiate_json = "";
         } catch (error) {
-          // エラーが起きる場合はデータが不十分である。
-          // エラーが起きたことを示して、データを保存する。
-          if (was_error) {
-            buf = data;
-          } else {
-            was_error = true;
-            buf = data;
-          }
-          
+          // ここにくるなら中途半端な json
           console.log(error);
-          // console.log(data);
+          was_intermidiate_json = true;
+          intermidiate_json = intermidiate_json + data_chunk
         }
       });
 
