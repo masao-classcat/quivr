@@ -12,7 +12,11 @@ export const useHandleStream = () => {
     const decoder = new TextDecoder("utf-8");
 
     // const sleep = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
-  
+
+    // masao
+    let was_intermidiate_json = false;
+    let intermidiate_json = "";    
+
     const handleStreamRecursively = async () => {
       // await sleep(10); //ms
       // ここが繰り返し呼ばれる。debug tool をかませるとエラーが起きない。
@@ -31,8 +35,8 @@ export const useHandleStream = () => {
         .filter(Boolean);
 
       // masao
-      let was_intermidiate_json = false;
-      let intermidiate_json = "";
+      // let was_intermidiate_json = false;
+      // let intermidiate_json = "";
 
       // ここで処理しているのは間違いない。sleep 入れる?
       dataStrings.forEach((data) => {
