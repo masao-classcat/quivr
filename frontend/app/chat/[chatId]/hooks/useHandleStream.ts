@@ -53,9 +53,12 @@ export const useHandleStream = () => {
           intermidiate_json = "";
         } catch (error) {
           // ここにくるなら中途半端な json
+          console.log("### Error ###")
           console.log(error);
           was_intermidiate_json = true;
+          console.log("intermidiate_json + data_chunk >>> ")
           intermidiate_json = intermidiate_json + data_chunk
+          console.log(intermidiate_json);
         }
       });
 
