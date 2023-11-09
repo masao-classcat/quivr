@@ -13,9 +13,11 @@ import { useEventTracking } from "@/services/analytics/june/useEventTracking";
 import { Suspense } from "react";
 import { useTranslation } from "react-i18next";
 
+// masao : 10-nov-23
 export default function RecoverPassword() {
   const { supabase, session } = useSupabase();
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isPending, setIsPending] = useState(false);
   const { track } = useEventTracking();
 
@@ -27,6 +29,22 @@ export default function RecoverPassword() {
     const handleChangePassword = async () => {
       void track("UPDATE_PASSWORD");
       setIsPending(true);
+
+      console.log(password);
+      console.log(confirmPassword);
+    
+      // masao : 08-nov-23
+      if (password !== confirmPassword) {
+        console.error("Error while resetting password:", "confirmation password mismatch.");
+        publish({
+          variant: "danger",
+          text: `Error: confirmation password mismatch.`,
+          // text: t("Error", { errorMessage: "confirmation password mismatch." }),
+        });
+        setIsPending(false);
+        return;
+      }  
+
       const { error } = await supabase.auth.updateUser({
         password: password,
       });
@@ -69,6 +87,15 @@ export default function RecoverPassword() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder={t("newPassword", { ns: "updatePassword" })}
+                data-testid="password-field"
+              />
+              <Field
+                name="New confirm password"
+                required
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder={t("newPassword", { ns: "updatePassword" })  + " (confirmation)"}
                 data-testid="password-field"
               />
               <div className="flex flex-col items-center justify-center mt-2 gap-2">
