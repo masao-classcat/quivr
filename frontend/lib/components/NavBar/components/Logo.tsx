@@ -17,7 +17,7 @@ export const Logo = (): JSX.Element => {
         width={48}
         height={48}
       />
-      <h1 className="font-bold">Second Brain</h1>
+      <h1 className="font-bold">ClassCat Chatbot</h1>
     </Link>
   );
 };
