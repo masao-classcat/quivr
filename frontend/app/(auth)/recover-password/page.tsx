@@ -16,8 +16,6 @@ import { useTranslation } from "react-i18next";
 // masao : 10-nov-23
 export default function RecoverPassword() {
 
-
-
   return (
     <Suspense fallback={"Loading..."}>
       <ChangePassword />
