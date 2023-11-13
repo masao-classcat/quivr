@@ -8,8 +8,8 @@
     "openAiKeyLabel": "Open AI Key",
     "openAiKeyPlaceholder": "sk-xxx",
     "modelLabel": "Model",
-    "anthropicKeyPlaceholder":"Anthropic API Key",
-    "anthropicKeyLabel":"Anthropic API Key",
+    "anthropicKeyPlaceholder": "Anthropic API Key",
+    "anthropicKeyLabel": "Anthropic API Key",
     "temperature": "Temperature",
     "maxTokens": "Max tokens",
     "accountSection": "Your Account",
@@ -33,7 +33,7 @@
     "removePrompt": "Remove prompt",
     "newAPIKey": "Create New Key",
     "configSaved": "Config saved",
-    "configReset": "Config reseted", 
+    "configReset": "Config reseted",
     "invalidOpenAiKey": "Invalid OpenAI Key",
     "error.createApiKey": "Error creating API Key",
     "error.copy": "Failed to copy",
@@ -48,5 +48,6 @@
     "ohno": "Oh no!",
     "noUser": "No user",
     "incorrectApiKey": "Incorrect API Key",
-    "invalidApiKeyError": "Invalid API Key"
-}   
+    "invalidApiKeyError": "Invalid API Key",
+    "apiKey": "API Key"
+}

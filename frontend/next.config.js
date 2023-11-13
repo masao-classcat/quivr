@@ -9,16 +9,12 @@ const nextConfig = {
   },
   // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
   async headers() {
-    if (process.env.NEXT_PUBLIC_ENV === "prod") {
-      return [
-        {
-          source: "/(.*)",
-          headers: securityHeaders,
-        },
-      ];
-    } else {
-      return [];
-    }
+    return [
+      {
+        source: "/(.*)",
+        headers: securityHeaders,
+      },
+    ];
   },
 };
 
@@ -28,7 +24,7 @@ const ContentSecurityPolicy = {
     "https://fonts.googleapis.com",
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     "https://api.june.so",
-    "https://www.quivr.app/",
+    process.env.NEXT_PUBLIC_FRONTEND_URL,
   ],
   "connect-src": [
     "'self'",
@@ -43,20 +39,21 @@ const ContentSecurityPolicy = {
   "media-src": [
     "'self'",
     "https://user-images.githubusercontent.com",
-    "https://www.quivr.app/",
+    process.env.NEXT_PUBLIC_FRONTEND_URL,
     "https://quivr-cms.s3.eu-west-3.amazonaws.com",
   ],
   "script-src": [
     "'unsafe-inline'",
     "'unsafe-eval'",
     "https://va.vercel-scripts.com/",
-    "https://www.quivr.app/",
+    process.env.NEXT_PUBLIC_FRONTEND_URL,
     "https://www.google-analytics.com/",
   ],
   "frame-ancestors": ["'none'"],
-  "style-src": ["'unsafe-inline'", "https://www.quivr.app/"],
+  "style-src": ["'unsafe-inline'", process.env.NEXT_PUBLIC_FRONTEND_URL],
 };
 
+// Build CSP string
 const cspString = Object.entries(ContentSecurityPolicy)
   .map(([key, values]) => `${key} ${values.join(" ")};`)
   .join(" ");

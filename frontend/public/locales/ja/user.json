@@ -5,5 +5,6 @@
     "brainSize": "残りの Brain サイズ",
     "empty": "空容量",
     "Used": "使用済",
-    "Unused": "未使用"
+    "Unused": "未使用",
+    "brainUsage": "Brain 使用量"
 }
