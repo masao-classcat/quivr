@@ -50,6 +50,7 @@ export const Onboarding = (): JSX.Element => {
   if (!shouldStepBeDisplayed) {
     return <Fragment />;
   }
+
   return (
     <div className="flex flex-col gap-2 mb-3">
       <MessageRow speaker={"assistant"} brainName={"Quivr"}>
