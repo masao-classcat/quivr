@@ -2,7 +2,7 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import { FaCopy } from "react-icons/fa";
+import { FaCopy, FaInfoCircle } from "react-icons/fa";
 
 import Button from "@/lib/components/ui/Button";
 import Field from "@/lib/components/ui/Field";
