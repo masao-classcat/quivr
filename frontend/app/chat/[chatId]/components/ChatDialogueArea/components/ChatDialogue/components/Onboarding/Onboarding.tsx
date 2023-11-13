@@ -6,9 +6,9 @@ import { RiDownloadLine } from "react-icons/ri";
 
 import Button from "@/lib/components/ui/Button";
 
-import { MessageRow } from "../QADisplay";
 import { useStreamText } from "./hooks/useStreamText";
 import { stepsContainerStyle } from "./styles";
+import { MessageRow } from "../QADisplay";
 
 export const Onboarding = (): JSX.Element => {
   const { t } = useTranslation(["chat"]);
