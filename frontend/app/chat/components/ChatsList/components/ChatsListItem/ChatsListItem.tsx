@@ -65,7 +65,7 @@ export const ChatsListItem = ({
         <button
           className="p-5 hover:text-red-700"
           type="button"
-          onClick={onDelete ?? (() => void deleteChat())}}
+          onClick={onDelete ?? (() => void deleteChat())}
           data-testid="delete-chat-button"
         >
           <FiTrash2 />
