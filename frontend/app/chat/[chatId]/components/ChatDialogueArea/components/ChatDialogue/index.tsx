@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 
 import { useOnboarding } from "@/lib/hooks/useOnboarding";
 
-import { ChatItemWithGroupedNotifications } from "../../types";
 import { ChatItem } from "./components";
 import { Onboarding } from "./components/Onboarding/Onboarding";
 import { useChatDialogue } from "./hooks/useChatDialogue";
@@ -11,6 +10,7 @@ import {
   chatItemContainerClassName,
 } from "./styles";
 import { getKeyFromChatItem } from "./utils/getKeyFromChatItem";
+import { ChatItemWithGroupedNotifications } from "../../types";
 
 type MessagesDialogueProps = {
   chatItems: ChatItemWithGroupedNotifications[];

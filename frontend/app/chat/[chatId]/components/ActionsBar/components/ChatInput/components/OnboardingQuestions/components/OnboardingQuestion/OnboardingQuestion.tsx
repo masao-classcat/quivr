@@ -2,8 +2,8 @@ import { Fragment } from "react";
 
 import { useOnboarding } from "@/lib/hooks/useOnboarding";
 
-import { QuestionId } from "../../types";
 import { useOnboardingQuestion } from "./hooks/useOnboardingQuestion";
+import { QuestionId } from "../../types";
 
 type OnboardingQuestionsProps = {
   questionId: QuestionId;
