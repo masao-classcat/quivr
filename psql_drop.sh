@@ -41,6 +41,6 @@ if $prompt_for_db_info ; then
 fi
 
 # Running the tables.sql file to create tables
-run_sql_file "scripts/drop_tables.sql"
+run_sql_file "scripts/drop_tables2.sql"
 
 echo "Drop script completed."

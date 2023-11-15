@@ -63,6 +63,10 @@ DROP TABLE IF EXISTS migrations;
 
 DROP TABLE IF EXISTS user_settings;
 
+DROP FUNCTION IF EXISTS public.create_user_onboarding;
+/* DROP FUNCTION IF EXISTS create_user_onboarding; */
+DROP TRIGGER IF EXISTS create_user_onboarding_trigger;
+
 -- DROP the onboarding table
 DROP TABLE IF EXISTS onboardings;
 
