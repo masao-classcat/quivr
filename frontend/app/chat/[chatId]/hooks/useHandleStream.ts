@@ -38,7 +38,7 @@ export const useHandleStream = () => {
         console.log(">> debug > IN dataString.forEach : 取得した data chunk は ->");
 
         let data_chunk = data.trim(); // このデータは json または不十分な json
-        console.log (data_chunk);
+        // console.log (data_chunk);
         if (was_intermidiate_json) {  // 前回が中途半端なら連結する。
           data_chunk = intermidiate_json + data_chunk;
         }
