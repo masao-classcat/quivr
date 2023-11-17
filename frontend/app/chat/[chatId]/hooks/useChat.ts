@@ -10,7 +10,10 @@ import { CHATS_DATA_KEY } from "@/lib/api/chat/config";
 import { useChatApi } from "@/lib/api/chat/useChatApi";
 import { useChatContext } from "@/lib/context";
 import { useBrainContext } from "@/lib/context/BrainProvider/hooks/useBrainContext";
+import { getChatNameFromQuestion } from "@/lib/helpers/getChatNameFromQuestion";
 import { useToast } from "@/lib/hooks";
+import { useOnboarding } from "@/lib/hooks/useOnboarding";
+import { useOnboardingTracker } from "@/lib/hooks/useOnboardingTracker";
 import { useEventTracking } from "@/services/analytics/june/useEventTracking";
 
 import { useQuestion } from "./useQuestion";
@@ -25,6 +28,8 @@ export const useChat = () => {
   const [chatId, setChatId] = useState<string | undefined>(
     params?.chatId as string | undefined
   );
+  const { isOnboarding } = useOnboarding();
+  const { trackOnboardingEvent } = useOnboardingTracker();
   const [generatingAnswer, setGeneratingAnswer] = useState(false);
   const router = useRouter();
   const { messages } = useChatContext();
@@ -35,11 +40,7 @@ export const useChat = () => {
   const { addStreamQuestion } = useQuestion();
   const { t } = useTranslation(["chat"]);
 
-
-
   const addQuestion = async (question: string, callback?: () => void) => {
-    console.log("### debug > useChat::addQuestion");
-
     if (question === "") {
       publish({
         variant: "danger",
@@ -58,8 +59,7 @@ export const useChat = () => {
 
       //if chatId is not set, create a new chat. Chat name is from the first question
       if (currentChatId === undefined) {
-        const chatName = question.split(" ").slice(0, 3).join(" ");
-        const chat = await createChat(chatName);
+        const chat = await createChat(getChatNameFromQuestion(question));
         currentChatId = chat.chat_id;
         setChatId(currentChatId);
         shouldUpdateUrl = true;
@@ -68,10 +68,17 @@ export const useChat = () => {
         });
       }
 
-      void track("QUESTION_ASKED", {
-        brainId: currentBrainId,
-        promptId: currentPromptId,
-      });
+      if (isOnboarding) {
+        void trackOnboardingEvent("QUESTION_ASKED", {
+          brainId: currentBrainId,
+          promptId: currentPromptId,
+        });
+      } else {
+        void track("QUESTION_ASKED", {
+          brainId: currentBrainId,
+          promptId: currentPromptId,
+        });
+      }
 
       const chatConfig = getChatsConfigFromLocalStorage();
 
