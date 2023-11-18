@@ -35,14 +35,16 @@ export const useHandleStream = () => {
       dataStrings.forEach((data) => {
         // json データの取得。json として不十分な chunk が上がるのが問題。
         // 単なる文字列でないから concatenate できないことに注意。
-        console.log(">> debug > IN dataString.forEach : 取得した data chunk は ->");
+        console.log(">> debug > IN dataString.forEach");
+        // console.log(">> debug > IN dataString.forEach : 取得した data chunk は ->");
 
         let data_chunk = data.trim(); // このデータは json または不十分な json
         // console.log (data_chunk);
         if (was_intermidiate_json) {  // 前回が中途半端なら連結する。
           data_chunk = intermidiate_json + data_chunk;
+          console.log("前回エラー発生したので連結");
         }
-        console.log("連結した data chunk は json が望ましい ->")
+        console.log ("parse する data chunk は ->");
         console.log(data_chunk);
         try {
           console.log(">> debug > call JSON.parse");
