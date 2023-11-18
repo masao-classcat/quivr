@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   frontend:
@@ -26,6 +26,7 @@ services:
     depends_on:
       - redis
       - worker
+      - beat
     ports:
       - 5050:5050
 
@@ -50,6 +51,20 @@ services:
     volumes:
       - ./backend/:/code/
 
+  beat:
+    env_file:
+      - ./backend/.env
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    container_name: beat
+    command: celery -A celery_worker beat -l info
+    restart: always
+    depends_on:
+      - redis
+    volumes:
+      - ./backend/:/code/
+
   flower:
     env_file:
       - ./backend/.env
@@ -64,5 +79,6 @@ services:
     depends_on:
       - redis
       - worker
+      - beat
     ports:
       - 5555:5555
