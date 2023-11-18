@@ -1,5 +1,15 @@
 {
   "sign_in": "Entrar",
   "sign_up": "Cadastrar",
-  "star_us": "Nos avalie no Github"
+  "star_us": "Nos avalie no Github",
+  "useCases": {
+    "title": "Experimente agora.",
+    "subtitle": "Confira nosso exemplo de uso do Quivr."
+  },
+  "intro": {
+    "title": "Obtenha um segundo cérebro com",
+    "subtitle": "Faça o upload de todos os seus arquivos e comece a conversar com eles.",
+    "try_demo": "Experimente a demonstração gratuita",
+    "contact_sales": "Entre em contato com a equipe de vendas"
+  }
 }
