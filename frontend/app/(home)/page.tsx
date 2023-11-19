@@ -47,8 +47,13 @@ const HomePage = (): JSX.Element => {
             <DemoSection />
           </HomeSection>
 
-          <HomeSection bg="bg-[#362469]" slantCurrent="down">
+          <HomeSection
+            bg="bg-[#362469]"
+            slantCurrent="down"
+            className="bg-gradient-to-b from-[#362469] from-75% to-white"
+          >
             <UseCases />
+            <div />
           </HomeSection>
 
           <HomeSection bg="bg-white" slantBefore="down" slantAfter="up">
@@ -60,7 +65,7 @@ const HomePage = (): JSX.Element => {
           </HomeSection>
 
           <HomeSection
-            bg="bg-gradient-to-b from-[#7A27FD] to-[#D07DF9]"
+            bg="bg-gradient-to-b from-[#D07DF9] to-[#7A27FD]"
             slantBefore="up"
           >
             <FooterSection />
