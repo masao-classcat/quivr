@@ -3,6 +3,7 @@
 import brain_en from "../../../public/locales/en/brain.json";
 import chat_en from "../../../public/locales/en/chat.json";
 import config_en from "../../../public/locales/en/config.json";
+import contact_en from "../../../public/locales/en/contact.json";
 import delete_brain_en from "../../../public/locales/en/deleteOrUnsubscribeFromBrain.json";
 import explore_en from "../../../public/locales/en/explore.json";
 import home_en from "../../../public/locales/en/home.json";
@@ -19,6 +20,7 @@ import user_en from "../../../public/locales/en/user.json";
 import brain_es from "../../../public/locales/es/brain.json";
 import chat_es from "../../../public/locales/es/chat.json";
 import config_es from "../../../public/locales/es/config.json";
+import contact_es from "../../../public/locales/es/contact.json";
 import delete_brain_es from "../../../public/locales/es/deleteOrUnsubscribeFromBrain.json";
 import explore_es from "../../../public/locales/es/explore.json";
 import home_es from "../../../public/locales/es/home.json";
@@ -35,6 +37,7 @@ import user_es from "../../../public/locales/es/user.json";
 import brain_fr from "../../../public/locales/fr/brain.json";
 import chat_fr from "../../../public/locales/fr/chat.json";
 import config_fr from "../../../public/locales/fr/config.json";
+import contact_fr from "../../../public/locales/fr/contact.json";
 import delete_brain_fr from "../../../public/locales/fr/deleteOrUnsubscribeFromBrain.json";
 import explore_fr from "../../../public/locales/fr/explore.json";
 import home_fr from "../../../public/locales/fr/home.json";
@@ -52,6 +55,7 @@ import user_fr from "../../../public/locales/fr/user.json";
 import brain_ja from "../../../public/locales/ja/brain.json";
 import chat_ja from "../../../public/locales/ja/chat.json";
 import config_ja from "../../../public/locales/ja/config.json";
+import contact_ja from "../../../public/locales/ja/contact.json";
 import delete_brain_ja from "../../../public/locales/ja/deleteOrUnsubscribeFromBrain.json";
 import explore_ja from "../../../public/locales/ja/explore.json";
 import home_ja from "../../../public/locales/ja/home.json";
@@ -68,6 +72,7 @@ import user_ja from "../../../public/locales/ja/user.json";
 import brain_ptbr from "../../../public/locales/pt-br/brain.json";
 import chat_ptbr from "../../../public/locales/pt-br/chat.json";
 import config_ptbr from "../../../public/locales/pt-br/config.json";
+import contact_ptbr from "../../../public/locales/pt-br/contact.json";
 import delete_brain_ptbr from "../../../public/locales/pt-br/deleteOrUnsubscribeFromBrain.json";
 import explore_ptbr from "../../../public/locales/pt-br/explore.json";
 import home_ptbr from "../../../public/locales/pt-br/home.json";
@@ -84,6 +89,7 @@ import user_ptbr from "../../../public/locales/pt-br/user.json";
 import brain_ru from "../../../public/locales/ru/brain.json";
 import chat_ru from "../../../public/locales/ru/chat.json";
 import config_ru from "../../../public/locales/ru/config.json";
+import contact_ru from "../../../public/locales/ru/contact.json";
 import delete_brain_ru from "../../../public/locales/ru/deleteOrUnsubscribeFromBrain.json";
 import explore_ru from "../../../public/locales/ru/explore.json";
 import home_ru from "../../../public/locales/ru/home.json";
@@ -100,6 +106,7 @@ import user_ru from "../../../public/locales/ru/user.json";
 import brain_zh_cn from "../../../public/locales/zh-cn/brain.json";
 import chat_zh_cn from "../../../public/locales/zh-cn/chat.json";
 import config_zh_cn from "../../../public/locales/zh-cn/config.json";
+import contact_zh_cn from "../../../public/locales/zh-cn/contact.json";
 import delete_brain_zh_cn from "../../../public/locales/zh-cn/deleteOrUnsubscribeFromBrain.json";
 import explore_zh_cn from "../../../public/locales/zh-cn/explore.json";
 import home_zh_cn from "../../../public/locales/zh-cn/home.json";
@@ -118,6 +125,7 @@ export type Translations = {
   brain: typeof import("../../../public/locales/en/brain.json");
   chat: typeof import("../../../public/locales/en/chat.json");
   config: typeof import("../../../public/locales/en/config.json");
+  contact: typeof import("../../../public/locales/en/contact.json");
   delete_or_unsubscribe_from_brain: typeof import("../../../public/locales/en/deleteOrUnsubscribeFromBrain.json");
   explore: typeof import("../../../public/locales/en/explore.json");
   home: typeof import("../../../public/locales/en/home.json");
@@ -149,6 +157,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     brain: brain_en,
     chat: chat_en,
     config: config_en,
+    contact: contact_en,
     explore: explore_en,
     home: home_en,
     invitation: invitation_en,
@@ -166,6 +175,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     brain: brain_es,
     chat: chat_es,
     config: config_es,
+    contact: contact_es,
     explore: explore_es,
     home: home_es,
     invitation: invitation_es,
@@ -183,6 +193,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     brain: brain_fr,
     chat: chat_fr,
     config: config_fr,
+    contact: contact_fr,
     explore: explore_fr,
     home: home_fr,
     invitation: invitation_fr,
@@ -200,6 +211,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     brain: brain_ja,
     chat: chat_ja,
     config: config_ja,
+    contact: contact_ja,
     explore: explore_ja,
     home: home_ja,
     invitation: invitation_ja,
@@ -217,6 +229,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     brain: brain_ptbr,
     chat: chat_ptbr,
     config: config_ptbr,
+    contact: contact_ptbr,
     explore: explore_ptbr,
     home: home_ptbr,
     invitation: invitation_ptbr,
@@ -234,6 +247,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     brain: brain_ru,
     chat: chat_ru,
     config: config_ru,
+    contact: contact_ru,
     explore: explore_ru,
     home: home_ru,
     invitation: invitation_ru,
@@ -251,6 +265,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     brain: brain_zh_cn,
     chat: chat_zh_cn,
     config: config_zh_cn,
+    contact: contact_zh_cn,
     explore: explore_zh_cn,
     home: home_zh_cn,
     invitation: invitation_zh_cn,

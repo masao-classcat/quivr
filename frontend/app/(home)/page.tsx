@@ -16,6 +16,7 @@ import {
   SecuritySection,
   TestimonialsSection,
 } from "./components";
+import { HomeHeaderBackground } from "./components/HomeHeader/components/HomeHeaderBackground";
 import { UseCases } from "./components/UseCases/UseCases";
 
 const HomePage = (): JSX.Element => {
@@ -32,6 +33,7 @@ const HomePage = (): JSX.Element => {
   if (isNewHomePage) {
     return (
       <>
+        <HomeHeaderBackground />
         <HomeHeader />
 
         <main className="relative flex flex-col items-center">
@@ -50,7 +52,7 @@ const HomePage = (): JSX.Element => {
           <HomeSection
             bg="bg-[#362469]"
             slantCurrent="down"
-            className="bg-gradient-to-b from-[#362469] from-75% to-white"
+            gradient="bg-gradient-to-t bg-gradient-to-t from-white to-[#362469]"
           >
             <UseCases />
             <div />
