@@ -23,6 +23,7 @@ export interface AdminPermission extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 1;
       }>;
+    actionParameters: Attribute.JSON & Attribute.DefaultTo<{}>;
     subject: Attribute.String &
       Attribute.SetMinMaxLength<{
         minLength: 1;
@@ -682,15 +683,22 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     singularName: 'blog';
     pluralName: 'blogs';
     displayName: 'Blog';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    description: Attribute.Text;
-    draft: Attribute.RichText;
-    imageUrl: Attribute.String;
+    Article: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'standard';
+        }
+      >;
+    seo: Attribute.Component<'shared.seo'>;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -786,6 +794,60 @@ export interface ApiDiscussionDiscussion extends Schema.CollectionType {
       'api::discussion.discussion',
       'oneToMany',
       'api::discussion.discussion'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiSecurityQuestionSecurityQuestion
+  extends Schema.CollectionType {
+  collectionName: 'security_questions';
+  info: {
+    singularName: 'security-question';
+    pluralName: 'security-questions';
+    displayName: 'Security-question';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    question: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::security-question.security-question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::security-question.security-question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::security-question.security-question',
+      'oneToMany',
+      'api::security-question.security-question'
     >;
     locale: Attribute.String;
   };
@@ -932,7 +994,7 @@ export interface ApiUseCaseUseCase extends Schema.CollectionType {
   };
 }
 
-declare module '@strapi/strapi' {
+declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
       'admin::permission': AdminPermission;
@@ -951,6 +1013,7 @@ declare module '@strapi/strapi' {
       'api::blog.blog': ApiBlogBlog;
       'api::demo-video.demo-video': ApiDemoVideoDemoVideo;
       'api::discussion.discussion': ApiDiscussionDiscussion;
+      'api::security-question.security-question': ApiSecurityQuestionSecurityQuestion;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::use-case.use-case': ApiUseCaseUseCase;
     }

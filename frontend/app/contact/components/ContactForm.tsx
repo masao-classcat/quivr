@@ -1,22 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { LuChevronRight } from "react-icons/lu";
 
 import Button from "@/lib/components/ui/Button";
+import Spinner from "@/lib/components/ui/Spinner";
+
+import { usePostContactSales } from "../hooks/usePostContactSales";
+
+const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
 export const ContactForm = (): JSX.Element => {
-  const [email, setEmail] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
-  const [submitted, setSubmitted] = useState<boolean>(false);
   const { t } = useTranslation("contact", { keyPrefix: "form" });
 
-  const handleSubmit = (ev: React.FormEvent) => {
-    ev.preventDefault();
-    setSubmitted(true);
-    console.log("submitting", email, message);
+  const { register, handleSubmit, formState } = useForm({
+    defaultValues: { email: "", message: "" },
+  });
+
+  const postEmail = usePostContactSales();
+
+  const onSubmit: SubmitHandler<{ email: string; message: string }> = (
+    data,
+    event
+  ) => {
+    event?.preventDefault();
+    postEmail.mutate({
+      customer_email: data.email,
+      content: data.message,
+    });
   };
 
-  if (submitted) {
+  if (postEmail.isSuccess) {
     return (
       <div className="flex flex-col items-center justify-center gap-5">
         <h2 className="text-2xl font-bold">{t("thank_you")}</h2>
@@ -25,8 +39,15 @@ export const ContactForm = (): JSX.Element => {
     );
   }
 
+  if (postEmail.isLoading) {
+    return <Spinner />;
+  }
+
   return (
-    <form className="flex flex-col gap-5 justify-stretch w-full">
+    <form
+      className="flex flex-col gap-5 justify-stretch w-full"
+      onSubmit={(event) => void handleSubmit(onSubmit)(event)}
+    >
       <fieldset className="grid grid-cols-1 sm:grid-cols-3 gap-2 w-full gap-y-5">
         <label className="font-bold" htmlFor="email">
           {t("email")}
@@ -34,31 +55,30 @@ export const ContactForm = (): JSX.Element => {
         </label>
         <input
           type="email"
-          id="email"
-          value={email}
-          onChange={(ev) => setEmail(ev.target.value)}
+          {...register("email", {
+            pattern: emailPattern,
+            required: true,
+          })}
           placeholder="jane@example.com"
           className="col-span-2 bg-[#FCFAF6] rounded-md p-2"
-          required
         />
         <label className="font-bold" htmlFor="message">
           {t("question")}
           <sup>*</sup>:
         </label>
         <textarea
-          id="message"
-          value={message}
+          {...register("message", {
+            required: true,
+          })}
           rows={3}
-          onChange={(ev) => setMessage(ev.target.value)}
           placeholder={t("placeholder_question")}
           className="col-span-2 bg-[#FCFAF6] rounded-md p-2"
-          required
         ></textarea>
       </fieldset>
 
       <Button
-        onClick={handleSubmit}
         className="self-end rounded-full bg-primary flex items-center justify-center gap-2 border-none hover:bg-primary/90"
+        disabled={!formState.isValid}
       >
         {t("submit")}
         <LuChevronRight size={24} />
