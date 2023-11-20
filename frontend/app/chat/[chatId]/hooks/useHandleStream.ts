@@ -42,10 +42,10 @@ export const useHandleStream = () => {
         // console.log (data_chunk);
         if (was_intermidiate_json) {  // 前回が中途半端なら連結する。
           data_chunk = intermidiate_json + data_chunk;
-          console.log("前回エラー発生したので連結");
+          // console.log("前回エラー発生したので連結");
         }
-        console.log ("parse する data chunk は ->");
-        console.log(data_chunk);
+        // console.log ("parse する data chunk は ->");
+        // console.log(data_chunk);
         try {
           console.log(">> debug > call JSON.parse");
           // 取り敢えず json に変換してみるが、ダメな場合は中途半端な json
@@ -54,7 +54,7 @@ export const useHandleStream = () => {
           // 成功すればクリア
           was_intermidiate_json = false;
           intermidiate_json = "";
-          console.log(">> debug > 変換に成功")
+          console.log(">> debug > 変換に成功！");
         } catch (error) {
           // ここにくるならまだ中途半端な json
           console.log("### Error ###")
