@@ -88,16 +88,20 @@ values
 
 -- v0.0.96
 -- Drop wrappers extension
-DROP EXTENSION IF EXISTS wrappers;
 
-DROP FOREIGN DATA WRAPPER IF EXISTS stripe_wrapper;
 
-DROP SERVER IF EXISTS stripe_server;
 
 DROP FOREIGN TABLE IF EXISTS public.customers;
 
 DROP TABLE IF EXISTS public.users;
 
-DROP FUNCTION IF EXISTS public.handle_new_user;
+DROP FUNCTION IF EXISTS public.handle_new_user CASCADE;
+
+DROP SERVER IF EXISTS stripe_server;
+
+DROP FOREIGN DATA WRAPPER IF EXISTS stripe_wrapper;
+
+DROP EXTENSION IF EXISTS wrappers;
+
 
 -- End of Scripts
