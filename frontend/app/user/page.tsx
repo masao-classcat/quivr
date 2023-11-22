@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 "use client";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
@@ -8,13 +7,14 @@ import Card, { CardBody, CardHeader } from "@/lib/components/ui/Card";
 import { useSupabase } from "@/lib/context/SupabaseProvider";
 import { redirectToLogin } from "@/lib/router/redirectToLogin";
 
-import { UserStatistics } from "./components";
+import { StripePricingOrManageButton, UserStatistics } from "./components";
 import { ApiKeyConfig } from "./components/ApiKeyConfig";
 import LanguageSelect from "./components/LanguageDropDown/LanguageSelect";
 import ThemeSelect from "./components/ThemeSelect/ThemeSelect";
 
 const UserPage = (): JSX.Element => {
   const { session } = useSupabase();
+
   if (!session) {
     redirectToLogin();
   }
@@ -31,18 +31,18 @@ const UserPage = (): JSX.Element => {
           </h2>
         </CardHeader>
 
-        <CardBody>
-          <p className="mb-3">
-            <strong>{t("email")}:</strong> <span>{user.email}</span>
-          </p>
-
-          <div className="inline-block">
+        <CardBody className="flex flex-col items-stretch max-w-max gap-2">
+          <div className="flex gap-5 items-center">
+            <p>
+              <strong>{t("email")}:</strong> <span>{user.email}</span>
+            </p>
             <Link href={"/logout"}>
               <Button className="px-3 py-2" variant="secondary">
                 {t("logoutButton")}
               </Button>
             </Link>
           </div>
+          <StripePricingOrManageButton />
         </CardBody>
       </Card>
 

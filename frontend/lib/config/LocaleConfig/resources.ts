@@ -12,9 +12,7 @@ import knowlegde_en from "../../../public/locales/en/knowledge.json";
 import login_en from "../../../public/locales/en/login.json";
 import logout_en from "../../../public/locales/en/logout.json";
 import monetization_en from "../../../public/locales/en/monetization.json";
-import signUp_en from "../../../public/locales/en/signUp.json";
 import translation_en from "../../../public/locales/en/translation.json";
-import updatePassword_en from "../../../public/locales/en/updatePassword.json";
 import upload_en from "../../../public/locales/en/upload.json";
 import user_en from "../../../public/locales/en/user.json";
 // import all namespaces Spanish
@@ -30,9 +28,7 @@ import knowlegde_es from "../../../public/locales/es/knowledge.json";
 import login_es from "../../../public/locales/es/login.json";
 import logout_es from "../../../public/locales/es/logout.json";
 import monetization_es from "../../../public/locales/es/monetization.json";
-import signUp_es from "../../../public/locales/es/signUp.json";
 import translation_es from "../../../public/locales/es/translation.json";
-import updatePassword_es from "../../../public/locales/es/updatePassword.json";
 import upload_es from "../../../public/locales/es/upload.json";
 import user_es from "../../../public/locales/es/user.json";
 // import all namespaces French
@@ -48,9 +44,7 @@ import knowlegde_fr from "../../../public/locales/fr/knowledge.json";
 import login_fr from "../../../public/locales/fr/login.json";
 import logout_fr from "../../../public/locales/fr/logout.json";
 import monetization_fr from "../../../public/locales/fr/monetization.json";
-import signUp_fr from "../../../public/locales/fr/signUp.json";
 import translation_fr from "../../../public/locales/fr/translation.json";
-import updatePassword_fr from "../../../public/locales/fr/updatePassword.json";
 import upload_fr from "../../../public/locales/fr/upload.json";
 import user_fr from "../../../public/locales/fr/user.json";
 // masao : 09-oct-23
@@ -67,9 +61,7 @@ import knowlegde_ja from "../../../public/locales/ja/knowledge.json";
 import login_ja from "../../../public/locales/ja/login.json";
 import logout_ja from "../../../public/locales/ja/logout.json";
 import monetization_ja from "../../../public/locales/ja/monetization.json";
-import signUp_ja from "../../../public/locales/ja/signUp.json";
 import translation_ja from "../../../public/locales/ja/translation.json";
-import updatePassword_ja from "../../../public/locales/ja/updatePassword.json";
 import upload_ja from "../../../public/locales/ja/upload.json";
 import user_ja from "../../../public/locales/ja/user.json";
 // import all namespaces Portuguese
@@ -85,9 +77,7 @@ import knowlegde_ptbr from "../../../public/locales/pt-br/knowledge.json";
 import login_ptbr from "../../../public/locales/pt-br/login.json";
 import logout_ptbr from "../../../public/locales/pt-br/logout.json";
 import monetization_ptbr from "../../../public/locales/pt-br/monetization.json";
-import signUp_ptbr from "../../../public/locales/pt-br/signUp.json";
 import translation_ptbr from "../../../public/locales/pt-br/translation.json";
-import updatePassword_ptbr from "../../../public/locales/pt-br/updatePassword.json";
 import upload_ptbr from "../../../public/locales/pt-br/upload.json";
 import user_ptbr from "../../../public/locales/pt-br/user.json";
 // import all namespaces Russian
@@ -103,9 +93,7 @@ import knowlegde_ru from "../../../public/locales/ru/knowledge.json";
 import login_ru from "../../../public/locales/ru/login.json";
 import logout_ru from "../../../public/locales/ru/logout.json";
 import monetization_ru from "../../../public/locales/ru/monetization.json";
-import signUp_ru from "../../../public/locales/ru/signUp.json";
 import translation_ru from "../../../public/locales/ru/translation.json";
-import updatePassword_ru from "../../../public/locales/ru/updatePassword.json";
 import upload_ru from "../../../public/locales/ru/upload.json";
 import user_ru from "../../../public/locales/ru/user.json";
 // import all namespaces Simplified Chinese
@@ -121,9 +109,7 @@ import knowlegde_zh_cn from "../../../public/locales/zh-cn/knowledge.json";
 import login_zh_cn from "../../../public/locales/zh-cn/login.json";
 import logout_zh_cn from "../../../public/locales/zh-cn/logout.json";
 import monetization_zh_cn from "../../../public/locales/zh-cn/monetization.json";
-import signUp_zh_cn from "../../../public/locales/zh-cn/signUp.json";
 import translation_zh_cn from "../../../public/locales/zh-cn/translation.json";
-import updatePassword_zh_cn from "../../../public/locales/zh-cn/updatePassword.json";
 import upload_zh_cn from "../../../public/locales/zh-cn/upload.json";
 import user_zh_cn from "../../../public/locales/zh-cn/user.json";
 
@@ -140,9 +126,7 @@ export type Translations = {
   login: typeof import("../../../public/locales/en/login.json");
   logout: typeof import("../../../public/locales/en/logout.json");
   monetization: typeof import("../../../public/locales/en/monetization.json");
-  signUp: typeof import("../../../public/locales/en/signUp.json");
   translation: typeof import("../../../public/locales/en/translation.json");
-  updatePassword: typeof import("../../../public/locales/en/updatePassword.json");
   upload: typeof import("../../../public/locales/en/upload.json");
   user: typeof import("../../../public/locales/en/user.json");
   knowledge: typeof import("../../../public/locales/en/knowledge.json");
@@ -172,9 +156,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     login: login_en,
     logout: logout_en,
     monetization: monetization_en,
-    signUp: signUp_en,
     translation: translation_en,
-    updatePassword: updatePassword_en,
     upload: upload_en,
     user: user_en,
     delete_or_unsubscribe_from_brain: delete_brain_en,
@@ -191,9 +173,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     login: login_es,
     logout: logout_es,
     monetization: monetization_es,
-    signUp: signUp_es,
     translation: translation_es,
-    updatePassword: updatePassword_es,
     upload: upload_es,
     user: user_es,
     delete_or_unsubscribe_from_brain: delete_brain_es,
@@ -210,9 +190,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     login: login_fr,
     logout: logout_fr,
     monetization: monetization_fr,
-    signUp: signUp_fr,
     translation: translation_fr,
-    updatePassword: updatePassword_fr,
     upload: upload_fr,
     user: user_fr,
     delete_or_unsubscribe_from_brain: delete_brain_fr,
@@ -229,9 +207,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     login: login_ja,
     logout: logout_ja,
     monetization: monetization_ja,
-    signUp: signUp_ja,
     translation: translation_ja,
-    updatePassword: updatePassword_ja,
     upload: upload_ja,
     user: user_ja,
     delete_or_unsubscribe_from_brain: delete_brain_ja,
@@ -248,9 +224,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     login: login_ptbr,
     logout: logout_ptbr,
     monetization: monetization_ptbr,
-    signUp: signUp_ptbr,
     translation: translation_ptbr,
-    updatePassword: updatePassword_ptbr,
     upload: upload_ptbr,
     user: user_ptbr,
     delete_or_unsubscribe_from_brain: delete_brain_ptbr,
@@ -267,9 +241,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     login: login_ru,
     logout: logout_ru,
     monetization: monetization_ru,
-    signUp: signUp_ru,
     translation: translation_ru,
-    updatePassword: updatePassword_ru,
     upload: upload_ru,
     user: user_ru,
     delete_or_unsubscribe_from_brain: delete_brain_ru,
@@ -286,9 +258,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     login: login_zh_cn,
     logout: logout_zh_cn,
     monetization: monetization_zh_cn,
-    signUp: signUp_zh_cn,
     translation: translation_zh_cn,
-    updatePassword: updatePassword_zh_cn,
     upload: upload_zh_cn,
     user: user_zh_cn,
     delete_or_unsubscribe_from_brain: delete_brain_zh_cn,

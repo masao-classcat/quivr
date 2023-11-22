@@ -1,5 +1,5 @@
-/* eslint-disable */
 import { useTranslation } from "react-i18next";
+import { FcGoogle } from "react-icons/fc";
 
 import Button from "@/lib/components/ui/Button";
 
@@ -13,10 +13,11 @@ export const GoogleLoginButton = (): JSX.Element => {
     <Button
       onClick={() => void signInWithGoogle()}
       isLoading={isPending}
-      variant={"danger"}
       type="button"
       data-testid="google-login-button"
+      className="font-normal bg-white text-black py-2 hover:text-white"
     >
+      <FcGoogle />
       {t("googleLogin", { ns: "login" })}
     </Button>
   );

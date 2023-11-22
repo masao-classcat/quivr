@@ -1,15 +1,8 @@
 {
-    "title": "ログイン",
-    "subtitle": "Welcome back",
-    "signup": "アカウントをお持ちではありませんか？サインアップ",
-    "forgottenPassword": "パスワードを忘れた場合",
-    "googleLogin": "Google でログイン",
-    "magicLink": "マジックリンクの送信",
-    "loginSuccess": "正常にログインしました",
+    "googleLogin": "Continue with Google",
+    "magicLink": "Continue with email",
     "errorMailMissed": "電子メールアドレスを入力してください",
-    "recoveryMailSended": "電子メールアドレスが認識されるとリカバリメールが送信されます",
-    "Invalidlogincredentials": "不正なログイン認証情報",
-    "password.updated": "Password updated successfully!",
-    "new_password": "New Password",
-    "Failedtofetch": "Failed to fetch data"
+    "talk_to": "Talk to",
+    "restriction_message": "Unpaid users have access to a free and limited demo of Quivr",
+    "email":"Email address"
 }

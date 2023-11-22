@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import { useSupabase } from "@/lib/context/SupabaseProvider";
+import { useToast } from "@/lib/hooks";
 
 type UseMagicLinkLoginProps = {
   email: string;
   setEmail: (email: string) => void;
 };
-
-import { useSupabase } from "@/lib/context/SupabaseProvider";
-import { useToast } from "@/lib/hooks";
 
 export const useMagicLinkLogin = ({
   email,
@@ -17,7 +18,7 @@ export const useMagicLinkLogin = ({
 } => {
   const { supabase } = useSupabase();
   const [isPending, setIsPending] = useState(false);
-
+  const { t } = useTranslation("login");
   const { publish } = useToast();
 
   // masao : 11-oct-23 : localization
@@ -25,7 +26,8 @@ export const useMagicLinkLogin = ({
     if (email === "") {
       publish({
         variant: "danger",
-        text: "貴方の電子メールアドレスを入力してください",
+        text: t("errorMailMissed"),
+        // text: "貴方の電子メールアドレスを入力してください",
         // text: "Please enter your email address",
       });
 
