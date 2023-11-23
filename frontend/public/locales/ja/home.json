@@ -2,15 +2,15 @@
     "sign_in": "サインイン",
     "sign_up": "サインアップ",
     "star_us": "Star us on Github",
-    "blog": "Blog",
+    "blog": "ブログ",
     "sponsored_by": "Sponsored by",
     "useCases": {
         "title": "Experience it now.",
         "subtitle": "Check our example on using Quivr"
     },
     "intro": {
-        "title": "Get a Second Brain with",
-        "subtitle": "Upload all your files and start talking with them.",
+        "title": "第2の Brain を獲得しましょう",
+        "subtitle": "貴方のファイルをすべてアップロードしてそれらと対話し始めしょう。",
         "try_demo": "Try free demo",
         "contact_sales": "Contact sales team"
     },
