@@ -2,7 +2,7 @@
     "title": "ログアウト",
     "subtitle": "See you next time",
     "areYouSure": "サインアウトしますが、よろしいですか？",
-    "cancel": "戻る",
+    "cancel": "キャンセル",
     "error": "Error on logout {{errorMessage}}",
     "loggedOut": "正常にログアウトしました"
 }
