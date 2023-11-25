@@ -31,6 +31,7 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  plugins: [require.resolve('docusaurus-lunr-search')],
 
   presets: [
     [
@@ -70,11 +71,6 @@ const config = {
           src: 'img/logo.png',
         },
         items: [
-          {
-            href: '/docs/roadmap',
-            label: 'Roadmap',
-            position: 'left',
-          },
           {
             href: 'https://quivr.app',
             position: 'right',
