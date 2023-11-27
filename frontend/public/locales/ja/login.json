@@ -2,17 +2,17 @@
     "password": "パスワード",
     "googleLogin": "Continue with Google",
     "errorPasswordMissed": "パスワードを入力してください",
-    "magicLink": "Continue with email",
+    "magicLink": "電子メールで続ける",
     "errorMailMissed": "電子メールアドレスを入力してください",
     "talk_to": "Talk to",
-    "restriction_message": "Unpaid users have access to a free and limited demo of Quivr",
-    "email": "Email address",
-    "cant_find": "Can't find it ?",
-    "try_again": "Try again",
+    "restriction_message": "Unpaid users have access to a free and limited demo of ClasCat Chatbot",
+    "email": "電子メールアドレス",
+    "cant_find": "見つかりませんか？",
+    "try_again": "再度試してください",
     "check_your_email": {
-        "part1": "We just sent you a ",
-        "magic_link": "Magic link",
-        "part2": ", check your emails and follow the steps."
+        "part1": "たった今、次のものを送信しました : ",
+        "magic_link": "マジックリンク",
+        "part2": "電子メールを確認して手順に従ってください。"
     },
     "login": "ログイン"
 }

@@ -12,7 +12,7 @@
     "anthropicKeyLabel": "Anthropic API Key",
     "temperature": "Temperature",
     "maxTokens": "最大トークン数",
-    "accountSection": "Your Account",
+    "accountSection": "貴方のアカウント",
     "signedInAs": "Signed In as",
     "backendSection": "Backend config",
     "backendUrlPlaceHolder": "Backend URL",
@@ -31,7 +31,7 @@
     "promptRemoved": "Prompt removed successfully",
     "errorRemovingPrompt": "Error while removing prompt",
     "removePrompt": "プロンプトの除去",
-    "newAPIKey": "Create New Key",
+    "newAPIKey": "新しいキーの作成",
     "configSaved": "Config saved",
     "configReset": "Config reseted",
     "invalidOpenAiKey": "Invalid OpenAI Key",
@@ -49,5 +49,5 @@
     "noUser": "No user",
     "incorrectApiKey": "Incorrect API Key",
     "invalidApiKeyError": "Invalid API Key",
-    "apiKey": "API Key"
+    "apiKey": "API キー"
 }

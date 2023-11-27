@@ -33,6 +33,6 @@
   "saveButton": "保存",
   "invalidUrl": "Invalid URL",
   "crawlButton": "Crawl",
-  "themeSelect": "Interface theme",
-  "languageSelect": "Preferred language"
+  "themeSelect": "インターフェイス・テーマ",
+  "languageSelect": "好みの言語"
 }
