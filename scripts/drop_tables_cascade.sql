@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS public.users CASCADE;
 
 DROP FUNCTION IF EXISTS public.handle_new_user CASCADE;
 
-DROP TRIGGER IF EXISTS on_auth_user_created CASCADE;
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users CASCADE;
 
 DROP POLICY IF EXISTS "Access Quivr Storage 1jccrwz_0" ON storage.objects CASCADE;
 DROP POLICY IF EXISTS "Access Quivr Storage 1jccrwz_1" ON storage.objects CASCADE;
