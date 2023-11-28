@@ -32,6 +32,7 @@ from repository.chat.get_chat_history_with_notifications import (
     get_chat_history_with_notifications,
 )
 from repository.notification.remove_chat_notifications import remove_chat_notifications
+
 from routes.chat.factory import get_chat_strategy
 from routes.chat.utils import (
     NullableUUID,
@@ -186,7 +187,6 @@ async def create_question_handler(
         is_model_ok = (brain_details or chat_question).model in userSettings.get("models", ["gpt-3.5-turbo"])  # type: ignore
 
         logger.debug(f"is_model_ok : {is_model_ok}")
-        gpt_answer_generator: HeadlessQA | QABaseBrainPicking
         gpt_answer_generator = chat_instance.get_answer_generator(
             chat_id=str(chat_id),
             model=chat_question.model if is_model_ok else "gpt-3.5-turbo",  # type: ignore
@@ -196,6 +196,7 @@ async def create_question_handler(
             user_openai_api_key=current_user.openai_api_key,  # pyright: ignore reportPrivateUsage=none
             streaming=False,   # masao : 26-nov-23 : rel 0.0.103
             prompt_id=chat_question.prompt_id,
+            user_id=current_user.id,
         )
 
         chat_answer = gpt_answer_generator.generate_answer(chat_id, chat_question)
@@ -282,6 +283,7 @@ async def create_stream_question_handler(
             streaming=True,
             prompt_id=chat_question.prompt_id,
             brain_id=str(brain_id),
+            user_id=current_user.id,
         )
 
         # masao : 12-oct-23 : debug
