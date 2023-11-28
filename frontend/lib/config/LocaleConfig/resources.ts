@@ -6,6 +6,7 @@ import config_en from "../../../public/locales/en/config.json";
 import contact_en from "../../../public/locales/en/contact.json";
 import delete_brain_en from "../../../public/locales/en/deleteOrUnsubscribeFromBrain.json";
 import explore_en from "../../../public/locales/en/explore.json";
+import external_api_definition_en from "../../../public/locales/en/external_api_definition.json";
 import home_en from "../../../public/locales/en/home.json";
 import invitation_en from "../../../public/locales/en/invitation.json";
 import knowlegde_en from "../../../public/locales/en/knowledge.json";
@@ -22,6 +23,7 @@ import config_es from "../../../public/locales/es/config.json";
 import contact_es from "../../../public/locales/es/contact.json";
 import delete_brain_es from "../../../public/locales/es/deleteOrUnsubscribeFromBrain.json";
 import explore_es from "../../../public/locales/es/explore.json";
+import external_api_definition_es from "../../../public/locales/es/external_api_definition.json";
 import home_es from "../../../public/locales/es/home.json";
 import invitation_es from "../../../public/locales/es/invitation.json";
 import knowlegde_es from "../../../public/locales/es/knowledge.json";
@@ -38,6 +40,7 @@ import config_fr from "../../../public/locales/fr/config.json";
 import contact_fr from "../../../public/locales/fr/contact.json";
 import delete_brain_fr from "../../../public/locales/fr/deleteOrUnsubscribeFromBrain.json";
 import explore_fr from "../../../public/locales/fr/explore.json";
+import external_api_definition_fr from "../../../public/locales/fr/external_api_definition.json";
 import home_fr from "../../../public/locales/fr/home.json";
 import invitation_fr from "../../../public/locales/fr/invitation.json";
 import knowlegde_fr from "../../../public/locales/fr/knowledge.json";
@@ -55,6 +58,7 @@ import config_ja from "../../../public/locales/ja/config.json";
 import contact_ja from "../../../public/locales/ja/contact.json";
 import delete_brain_ja from "../../../public/locales/ja/deleteOrUnsubscribeFromBrain.json";
 import explore_ja from "../../../public/locales/ja/explore.json";
+import external_api_definition_ja from "../../../public/locales/ja/external_api_definition.json";
 import home_ja from "../../../public/locales/ja/home.json";
 import invitation_ja from "../../../public/locales/ja/invitation.json";
 import knowlegde_ja from "../../../public/locales/ja/knowledge.json";
@@ -71,6 +75,7 @@ import config_ptbr from "../../../public/locales/pt-br/config.json";
 import contact_ptbr from "../../../public/locales/pt-br/contact.json";
 import delete_brain_ptbr from "../../../public/locales/pt-br/deleteOrUnsubscribeFromBrain.json";
 import explore_ptbr from "../../../public/locales/pt-br/explore.json";
+import external_api_definition_ptbr from "../../../public/locales/pt-br/external_api_definition.json";
 import home_ptbr from "../../../public/locales/pt-br/home.json";
 import invitation_ptbr from "../../../public/locales/pt-br/invitation.json";
 import knowlegde_ptbr from "../../../public/locales/pt-br/knowledge.json";
@@ -87,6 +92,7 @@ import config_ru from "../../../public/locales/ru/config.json";
 import contact_ru from "../../../public/locales/ru/contact.json";
 import delete_brain_ru from "../../../public/locales/ru/deleteOrUnsubscribeFromBrain.json";
 import explore_ru from "../../../public/locales/ru/explore.json";
+import external_api_definition_ru from "../../../public/locales/ru/external_api_definition.json";
 import home_ru from "../../../public/locales/ru/home.json";
 import invitation_ru from "../../../public/locales/ru/invitation.json";
 import knowlegde_ru from "../../../public/locales/ru/knowledge.json";
@@ -103,6 +109,7 @@ import config_zh_cn from "../../../public/locales/zh-cn/config.json";
 import contact_zh_cn from "../../../public/locales/zh-cn/contact.json";
 import delete_brain_zh_cn from "../../../public/locales/zh-cn/deleteOrUnsubscribeFromBrain.json";
 import explore_zh_cn from "../../../public/locales/zh-cn/explore.json";
+import external_api_definition_zh_cn from "../../../public/locales/zh-cn/external_api_definition.json";
 import home_zh_cn from "../../../public/locales/zh-cn/home.json";
 import invitation_zh_cn from "../../../public/locales/zh-cn/invitation.json";
 import knowlegde_zh_cn from "../../../public/locales/zh-cn/knowledge.json";
@@ -130,6 +137,7 @@ export type Translations = {
   upload: typeof import("../../../public/locales/en/upload.json");
   user: typeof import("../../../public/locales/en/user.json");
   knowledge: typeof import("../../../public/locales/en/knowledge.json");
+  external_api_definition: typeof import("../../../public/locales/en/external_api_definition.json");
 };
 
 // masao : 09-oct-23
@@ -161,6 +169,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     user: user_en,
     delete_or_unsubscribe_from_brain: delete_brain_en,
     knowledge: knowlegde_en,
+    external_api_definition: external_api_definition_en,
   },
   es: {
     brain: brain_es,
@@ -178,6 +187,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     user: user_es,
     delete_or_unsubscribe_from_brain: delete_brain_es,
     knowledge: knowlegde_es,
+    external_api_definition: external_api_definition_es,
   },
   fr: {
     brain: brain_fr,
@@ -195,6 +205,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     user: user_fr,
     delete_or_unsubscribe_from_brain: delete_brain_fr,
     knowledge: knowlegde_fr,
+    external_api_definition: external_api_definition_fr,
   },
   ja: {
     brain: brain_ja,
@@ -212,6 +223,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     user: user_ja,
     delete_or_unsubscribe_from_brain: delete_brain_ja,
     knowledge: knowlegde_ja,
+    external_api_definition: external_api_definition_ja,
   },
   ptbr: {
     brain: brain_ptbr,
@@ -229,6 +241,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     user: user_ptbr,
     delete_or_unsubscribe_from_brain: delete_brain_ptbr,
     knowledge: knowlegde_ptbr,
+    external_api_definition: external_api_definition_ptbr,
   },
   ru: {
     brain: brain_ru,
@@ -246,6 +259,7 @@ export const resources: Record<SupportedLanguages, Translations> = {
     user: user_ru,
     delete_or_unsubscribe_from_brain: delete_brain_ru,
     knowledge: knowlegde_ru,
+    external_api_definition: external_api_definition_ru,
   },
   zh_cn: {
     brain: brain_zh_cn,
@@ -263,5 +277,6 @@ export const resources: Record<SupportedLanguages, Translations> = {
     user: user_zh_cn,
     delete_or_unsubscribe_from_brain: delete_brain_zh_cn,
     knowledge: knowlegde_zh_cn,
+    external_api_definition: external_api_definition_zh_cn,
   },
 } as const;
