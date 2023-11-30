@@ -133,7 +133,6 @@ async def create_question_handler(
     brain_id: NullableUUID
     | UUID
     | None = Query(..., description="The ID of the brain"),
-    current_user: UserIdentity = Depends(get_current_user),
 ) -> GetChatHistoryOutput:
     """
     Add a new question to the chat.
@@ -152,15 +151,10 @@ async def create_question_handler(
     userDailyUsage = UserUsage(
         id=current_user.id,
         email=current_user.email,
-        openai_api_key=current_user.openai_api_key,
     )
     userSettings = userDailyUsage.get_user_settings()
     is_model_ok = (brain_details or chat_question).model in userSettings.get("models", ["gpt-3.5-turbo"])  # type: ignore
 
-    if not current_user.openai_api_key:
-        current_user.openai_api_key = chat_instance.get_openai_api_key(
-            brain_id=brain_id, user_id=current_user.id
-        )
     # Retrieve chat model (temperature, max_tokens, model)
     if (
         not chat_question.model
@@ -185,7 +179,6 @@ async def create_question_handler(
             max_tokens=chat_question.max_tokens,
             temperature=chat_question.temperature,
             brain_id=str(brain_id),
-            user_openai_api_key=current_user.openai_api_key,  # pyright: ignore reportPrivateUsage=none
             streaming=False,   # masao : 26-nov-23 : rel 0.0.103
             prompt_id=chat_question.prompt_id,
             user_id=current_user.id,
@@ -225,22 +218,14 @@ async def create_stream_question_handler(
     chat_instance = get_chat_strategy(brain_id)
     chat_instance.validate_authorization(user_id=current_user.id, brain_id=brain_id)
 
-    # Retrieve user's OpenAI API key
-    current_user.openai_api_key = request.headers.get("Openai-Api-Key")
     brain = Brain(id=brain_id)
     brain_details: BrainEntity | None = None
     userDailyUsage = UserUsage(
         id=current_user.id,
         email=current_user.email,
-        openai_api_key=current_user.openai_api_key,
     )
 
     userSettings = userDailyUsage.get_user_settings()
-
-    if not current_user.openai_api_key:
-        current_user.openai_api_key = chat_instance.get_openai_api_key(
-            brain_id=brain_id, user_id=current_user.id
-        )
 
     # Retrieve chat model (temperature, max_tokens, model)
     if (
@@ -271,7 +256,6 @@ async def create_stream_question_handler(
             model=(brain_details or chat_question).model if is_model_ok else "gpt-3.5-turbo",  # type: ignore
             max_tokens=(brain_details or chat_question).max_tokens,  # type: ignore
             temperature=(brain_details or chat_question).temperature,  # type: ignore
-            user_openai_api_key=current_user.openai_api_key,  # pyright: ignore reportPrivateUsage=none
             streaming=True,
             prompt_id=chat_question.prompt_id,
             brain_id=str(brain_id),

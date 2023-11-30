@@ -11,7 +11,7 @@
     "anthropicKeyPlaceholder": "Anthropic API Key",
     "anthropicKeyLabel": "Anthropic API Key",
     "temperature": "Temperature",
-    "maxTokens": "Max tokens",
+    "maxTokens": "Maximum Words per Response",
     "accountSection": "Your Account",
     "signedInAs": "Signed In as",
     "backendSection": "Backend config",

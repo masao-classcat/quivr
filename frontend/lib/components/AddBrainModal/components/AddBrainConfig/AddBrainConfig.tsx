@@ -39,11 +39,9 @@ export const AddBrainConfig = ({
     isPending,
     pickPublicPrompt,
     accessibleModels,
-    status,
     isPublicAccessConfirmationModalOpened,
     onCancelPublicAccess,
     onConfirmPublicAccess,
-    brainType,
     register,
     handleSubmit,
   } = useAddBrainConfig();
@@ -100,7 +98,6 @@ export const AddBrainConfig = ({
             <Radio
               items={brainStatusOptions}
               label={t("brain_status_label", { ns: "brain" })}
-              value={status}
               className="flex-1 justify-between w-[50%]"
               {...register("status")}
             />
@@ -111,7 +108,6 @@ export const AddBrainConfig = ({
                 <Radio
                   items={knowledgeSourceOptions}
                   label={t("knowledge_source_label", { ns: "brain" })}
-                  value={brainType}
                   className="flex-1 justify-between w-[50%]"
                   {...register("brain_type")}
                 />
@@ -119,13 +115,7 @@ export const AddBrainConfig = ({
               <ApiRequestDefinition />
             </>
           )}
-          <Field
-            label={t("openAiKeyLabel", { ns: "config" })}
-            placeholder={t("openAiKeyPlaceholder", { ns: "config" })}
-            autoComplete="off"
-            className="flex-1"
-            {...register("openai_api_key")}
-          />
+          
 
           <fieldset className="w-full flex flex-col">
             <label className="flex-1 text-sm" htmlFor="model">

@@ -11,7 +11,7 @@
     "anthropicKeyPlaceholder": "Anthropic API Key",
     "anthropicKeyLabel": "Anthropic API Key",
     "temperature": "Temperature",
-    "maxTokens": "最大トークン数",
+    "maxTokens": "応答毎の最大トークン数",
     "accountSection": "貴方のアカウント",
     "signedInAs": "Signed In as",
     "backendSection": "Backend config",

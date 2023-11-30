@@ -47,7 +47,6 @@ export const useAddBrainConfig = () => {
     formState: { dirtyFields },
   } = useFormContext<CreateBrainProps>();
 
-  const openAiKey = watch("openai_api_key");
   const model = watch("model");
   const temperature = watch("temperature");
   const maxTokens = watch("max_tokens");
@@ -55,7 +54,6 @@ export const useAddBrainConfig = () => {
   const brainType = watch("brain_type");
 
   const accessibleModels = getAccessibleModels({
-    openAiKey,
     userData,
   });
 
@@ -109,7 +107,6 @@ export const useAddBrainConfig = () => {
         description,
         max_tokens: maxTokens,
         model,
-        openai_api_key: openAiKey,
         temperature,
         prompt_id,
         status,
@@ -202,11 +199,9 @@ export const useAddBrainConfig = () => {
     isPending,
     accessibleModels,
     pickPublicPrompt,
-    status,
     isPublicAccessConfirmationModalOpened,
     onConfirmPublicAccess,
     onCancelPublicAccess,
-    brainType,
     register,
   };
 };
