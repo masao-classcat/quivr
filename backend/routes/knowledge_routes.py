@@ -52,7 +52,7 @@ async def list_knowledge_in_brain_endpoint(
     logger.debug(f"len of knowledges {len(knowledges)}")
     logger.debug(f"knowledges {knowledges}")
     
-    #logger.info("List of knowledge from knowledge table", knowledges)
+    logger.info(f"List of knowledge from knowledge table: {knowledges}")
 
     return {"knowledges": knowledges}
 

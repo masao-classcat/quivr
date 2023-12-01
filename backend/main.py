@@ -13,6 +13,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from logger import get_logger
 from middlewares.cors import add_cors_middleware
+from modules.onboarding.controller.onboarding_routes import onboarding_router
+from modules.prompt.controller.prompt_routes import prompt_router
 from modules.user.controller.user_controller import user_router
 from routes.api_key_routes import api_key_router
 from routes.brain_routes import brain_router
@@ -23,8 +25,6 @@ from routes.explore_routes import explore_router
 from routes.knowledge_routes import knowledge_router
 from routes.misc_routes import misc_router
 from routes.notification_routes import notification_router
-from routes.onboarding_routes import onboarding_router
-from routes.prompt_routes import prompt_router
 from routes.subscription_routes import subscription_router
 from routes.upload_routes import upload_router
 
@@ -41,7 +41,8 @@ sentry_dsn = os.getenv("SENTRY_DSN")
 if sentry_dsn:
     sentry_sdk.init(
         dsn=sentry_dsn,
-        traces_sample_rate=1.0,
+        traces_sample_rate=0.1,
+        profiles_sample_rate=0.1,
     )
 
 app = FastAPI()
