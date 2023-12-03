@@ -1,17 +1,16 @@
 from uuid import UUID
 
-from models.settings import get_supabase_client
 from modules.onboarding.dto.inputs import OnboardingUpdatableProperties
 from modules.onboarding.entity.onboarding import OnboardingStates
 from modules.onboarding.repository.onboardings import Onboarding
+from modules.onboarding.repository.onboardings_interface import OnboardingInterface
 
 
 class OnboardingService:
-    repository: Onboarding
+    repository: OnboardingInterface
 
     def __init__(self):
-        supabase_client = get_supabase_client()
-        self.repository = Onboarding(supabase_client)
+        self.repository = Onboarding()
 
     def create_user_onboarding(self, user_id: UUID) -> OnboardingStates:
         """Update user onboarding information by user_id"""
@@ -21,8 +20,10 @@ class OnboardingService:
     def get_user_onboarding(self, user_id: UUID) -> OnboardingStates | None:
         """
         Get a user's onboarding status
+
         Args:
             user_id (UUID): The id of the user
+
         Returns:
             Onboardings: The user's onboarding status
         """

@@ -6,8 +6,6 @@ from models.databases.supabase import (
     BrainSubscription,
     Chats,
     File,
-    Knowledges,
-    Notifications,
     UserUsage,
     Vector,
 )
@@ -23,8 +21,6 @@ class SupabaseDB(
     ApiKeyHandler,
     Chats,
     Vector,
-    Notifications,
-    Knowledges,
     ApiBrainDefinitions,
 ):
     def __init__(self, supabase_client):
@@ -36,6 +32,4 @@ class SupabaseDB(
         ApiKeyHandler.__init__(self, supabase_client)
         Chats.__init__(self, supabase_client)
         Vector.__init__(self, supabase_client)
-        Notifications.__init__(self, supabase_client)
-        Knowledges.__init__(self, supabase_client)
         ApiBrainDefinitions.__init__(self, supabase_client)
