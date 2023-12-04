@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { useChat } from "@/app/chat/[chatId]/hooks/useChat";
 
@@ -7,12 +7,11 @@ export const useChatInput = () => {
   const [message, setMessage] = useState<string>("");
   const { addQuestion, generatingAnswer, chatId } = useChat();
 
-  const submitQuestion = () => {
-    console.log("### debug > useChatInput::submitQuestion (frontend/app/chat/[chatId]/components/ActionBar/components/ChatInput/hooks/useChatInput.ts)")
+  const submitQuestion = useCallback(() => {
     if (!generatingAnswer) {
       void addQuestion(message, () => setMessage(""));
     }
-  };
+  }, [addQuestion, generatingAnswer, message]);
 
   return {
     message,
