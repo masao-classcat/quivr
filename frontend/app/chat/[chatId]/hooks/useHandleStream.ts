@@ -9,9 +9,9 @@ masao : 15-nov-23 : バックエンドからの json ストリームの変換の
 export const useHandleStream = () => {
   const { updateStreamingHistory } = useChatContext();
 
+  // v126
   const handleStream = async (
-    reader: ReadableStreamDefaultReader<Uint8Array>
-    // v126
+    reader: ReadableStreamDefaultReader<Uint8Array>,
     onFirstChunk: () => void
   ): Promise<void> => {
     const decoder = new TextDecoder("utf-8");
