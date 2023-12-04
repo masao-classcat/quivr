@@ -10,9 +10,9 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 #from logger import get_logger
 from logging import getLogger, StreamHandler, DEBUG
 
-from models.brains import Brain
 from models.databases.supabase.supabase import SupabaseDB
 from models.settings import get_supabase_db
+from modules.brain.service.brain_vector_service import BrainVectorService
 from packages.files.file import compute_sha1_from_file
 from pydantic import BaseModel
 
@@ -151,11 +151,13 @@ class File(BaseModel):
         """
         return self.file.size < 1  # pyright: ignore reportPrivateUsage=none
 
-    def link_file_to_brain(self, brain: Brain):
+    def link_file_to_brain(self, brain_id):
         self.set_file_vectors_ids()
 
         if self.vectors_ids is None:
             return
 
+        brain_vector_service = BrainVectorService(brain_id)
+
         for vector_id in self.vectors_ids:  # pyright: ignore reportPrivateUsage=none
-            brain.create_brain_vector(vector_id["id"], self.file_sha1)
+            brain_vector_service.create_brain_vector(vector_id["id"], self.file_sha1)

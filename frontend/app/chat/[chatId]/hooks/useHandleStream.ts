@@ -11,8 +11,13 @@ export const useHandleStream = () => {
 
   const handleStream = async (
     reader: ReadableStreamDefaultReader<Uint8Array>
+    // v126
+    onFirstChunk: () => void
   ): Promise<void> => {
     const decoder = new TextDecoder("utf-8");
+    // v126
+    let isFirstChunk = true;
+
     // 不十分な json を保持する。
     let was_intermidiate_json = false;
     let intermidiate_json = "";    
@@ -24,6 +29,12 @@ export const useHandleStream = () => {
 
       if (done) {
         return;
+      }
+
+      // v126
+      if (isFirstChunk) {
+        isFirstChunk = false;
+        onFirstChunk();
       }
 
       const dataStrings = decoder

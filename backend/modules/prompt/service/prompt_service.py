@@ -16,7 +16,7 @@ class PromptService:
 
     def __init__(self):
         supabase_client = get_supabase_client()
-        self.repository = Prompts(supabase_client)
+        self.repository = Prompts()
 
     def create_prompt(self, prompt: CreatePromptProperties) -> Prompt:
         return self.repository.create_prompt(prompt)
@@ -26,6 +26,7 @@ class PromptService:
         Delete a prompt by id
         Args:
             prompt_id (UUID): The id of the prompt
+
         Returns:
             Prompt: The prompt
         """
@@ -34,8 +35,10 @@ class PromptService:
     def get_prompt_by_id(self, prompt_id: UUID) -> Prompt | None:
         """
         Get a prompt by its id
+
         Args:
             prompt_id (UUID): The id of the prompt
+
         Returns:
             Prompt: The prompt
         """
