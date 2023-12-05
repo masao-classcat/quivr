@@ -105,6 +105,9 @@ DROP SERVER IF EXISTS stripe_server;
 
 DROP FOREIGN DATA WRAPPER IF EXISTS stripe_wrapper;
 
+DROP SCHEMA IF EXISTS extensions;
+
+DROP TABLE IF EXISTS extensions.wrappers_fdw_stats CASCADE;
 
 
 
