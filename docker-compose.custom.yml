@@ -3,6 +3,8 @@ version: "3.8"
 services:
   frontend:
     pull_policy: never
+    env_file:
+      - .env
     build:
       context: frontend
       dockerfile: Dockerfile
@@ -27,10 +29,10 @@ services:
       - .env
     build:
       context: backend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: backend-core
-    #healthcheck:
-    #  test: [ "CMD", "curl", "http://localhost:5050/healthz" ]
+    healthcheck:
+      test: [ "CMD", "curl", "http://localhost:5050/healthz" ]
     command:
       - "uvicorn"
       - "main:app"
@@ -73,7 +75,7 @@ services:
       - .env
     build:
       context: backend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: worker
     command: celery -A celery_worker worker -l info
     restart: always
@@ -88,7 +90,7 @@ services:
       - .env
     build:
       context: backend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: beat
     command: celery -A celery_worker beat -l info
     restart: always
@@ -102,7 +104,7 @@ services:
       - .env
     build:
       context: backend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: flower
     command: celery -A celery_worker flower -l info --port=5555
     restart: always
