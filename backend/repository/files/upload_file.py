@@ -10,6 +10,8 @@ logger = get_logger()
 
 
 def upload_file_storage(file, file_identifier: str):
+    logger.info(">> debug > IN upload_file_storage (repository/files/upload_file.py)")
+
     supabase_client: Client = get_supabase_client()
     # res = supabase_client.storage.create_bucket("quivr")
     response = None
