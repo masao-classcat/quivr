@@ -47,6 +47,9 @@ async def upload_file(
         brain_id, current_user.id, [RoleEnum.Editor, RoleEnum.Owner]
     )
 
+    print ("### debug ###")
+    logger.info(">> debug > IN upload_file (modules/upload/controller/upload_routes.py)")
+
     user_daily_usage = UserUsage(
         id=current_user.id,
         email=current_user.email,
@@ -74,6 +77,8 @@ async def upload_file(
     filename_with_brain_id = str(brain_id) + "/" + str(uploadFile.filename)
 
     try:
+        print ("### debug ###")
+        logger.info(">> debug > call upload_file_storage (modules/upload/controller/upload_routes.py)")
         file_in_storage = upload_file_storage(file_content, filename_with_brain_id)
         logger.info(f"File {file_in_storage} uploaded successfully")
 
