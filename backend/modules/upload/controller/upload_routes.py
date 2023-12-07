@@ -5,8 +5,8 @@ from uuid import UUID
 from celery_worker import process_file_and_notify
 from fastapi import APIRouter, Depends, HTTPException, Query, Request, UploadFile
 # masao : 07-dec-23
-from logging import getLogger, StreamHandler, DEBUG
-#from logger import get_logger
+#from logging import getLogger, StreamHandler, DEBUG
+from logger import get_logger
 from middlewares.auth import AuthBearer, get_current_user
 from models import UserUsage
 from modules.brain.entity.brain_entity import RoleEnum
@@ -26,13 +26,13 @@ from packages.files.file import convert_bytes, get_file_size
 from repository.files.upload_file import upload_file_storage
 
 # masao : 07-dec-23
-#logger = get_logger(__name__)
-logger = getLogger(__name__)
-handler = StreamHandler()
-handler.setLevel(DEBUG)
-logger.setLevel(DEBUG)
-logger.addHandler(handler)
-logger.propagate = False
+logger = get_logger(__name__)
+#logger = getLogger(__name__)
+#handler = StreamHandler()
+#handler.setLevel(DEBUG)
+#logger.setLevel(DEBUG)
+#logger.addHandler(handler)
+#logger.propagate = False
 
 upload_router = APIRouter()
 
@@ -57,7 +57,6 @@ async def upload_file(
         brain_id, current_user.id, [RoleEnum.Editor, RoleEnum.Owner]
     )
 
-    print ("### debug ###")
     logger.debug(">> debug > IN upload_file (modules/upload/controller/upload_routes.py)")
 
     user_daily_usage = UserUsage(
@@ -87,8 +86,8 @@ async def upload_file(
     filename_with_brain_id = str(brain_id) + "/" + str(uploadFile.filename)
 
     try:
-        print ("### debug ###")
-        logger.debug(">> debug > call upload_file_storage (modules/upload/controller/upload_routes.py)")
+        #print ("### debug ###")
+        logger.info(">> debug > call upload_file_storage (modules/upload/controller/upload_routes.py)")
         file_in_storage = upload_file_storage(file_content, filename_with_brain_id)
         logger.info(f"File {file_in_storage} uploaded successfully")
 
