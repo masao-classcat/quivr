@@ -1,7 +1,7 @@
 import json
 
 # masao : 07-dec-23
-from logging import getLogger, DEBUG
+from logging import getLogger, StreamHandler, DEBUG
 #from multiprocessing import get_logger
 
 from langchain.pydantic_v1 import Field
@@ -11,7 +11,11 @@ from supabase.client import Client
 
 #logger = get_logger()
 logger = getLogger(__name__)
+handler = StreamHandler()
+handler.setLevel(DEBUG)
 logger.setLevel(DEBUG)
+logger.addHandler(handler)
+logger.propagate = False
 
 
 def upload_file_storage(file, file_identifier: str):

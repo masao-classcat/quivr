@@ -5,7 +5,7 @@ from uuid import UUID
 from celery_worker import process_file_and_notify
 from fastapi import APIRouter, Depends, HTTPException, Query, Request, UploadFile
 # masao : 07-dec-23
-from logging import getLogger, DEBUG
+from logging import getLogger, StreamHandler, DEBUG
 #from logger import get_logger
 from middlewares.auth import AuthBearer, get_current_user
 from models import UserUsage
@@ -28,7 +28,11 @@ from repository.files.upload_file import upload_file_storage
 # masao : 07-dec-23
 #logger = get_logger(__name__)
 logger = getLogger(__name__)
+handler = StreamHandler()
+handler.setLevel(DEBUG)
 logger.setLevel(DEBUG)
+logger.addHandler(handler)
+logger.propagate = False
 
 upload_router = APIRouter()
 
