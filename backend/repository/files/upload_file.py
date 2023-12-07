@@ -1,17 +1,22 @@
 import json
-from multiprocessing import get_logger
+
+# masao : 07-dec-23
+from logging import getLogger, DEBUG
+#from multiprocessing import get_logger
 
 from langchain.pydantic_v1 import Field
 from langchain.schema import Document
 from models import get_supabase_client
 from supabase.client import Client
 
-logger = get_logger()
+#logger = get_logger()
+logger = getLogger(__name__)
+logger.setLevel(DEBUG)
 
 
 def upload_file_storage(file, file_identifier: str):
     print ("### debug ###")
-    logger.info(">> debug > IN upload_file_storage (repository/files/upload_file.py)")
+    logger.debug(">> debug > IN upload_file_storage (repository/files/upload_file.py)")
 
     supabase_client: Client = get_supabase_client()
     # res = supabase_client.storage.create_bucket("quivr")

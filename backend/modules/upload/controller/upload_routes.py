@@ -4,7 +4,9 @@ from uuid import UUID
 
 from celery_worker import process_file_and_notify
 from fastapi import APIRouter, Depends, HTTPException, Query, Request, UploadFile
-from logger import get_logger
+# masao : 07-dec-23
+from logging import getLogger, DEBUG
+#from logger import get_logger
 from middlewares.auth import AuthBearer, get_current_user
 from models import UserUsage
 from modules.brain.entity.brain_entity import RoleEnum
@@ -23,7 +25,11 @@ from modules.user.entity.user_identity import UserIdentity
 from packages.files.file import convert_bytes, get_file_size
 from repository.files.upload_file import upload_file_storage
 
-logger = get_logger(__name__)
+# masao : 07-dec-23
+#logger = get_logger(__name__)
+logger = getLogger(__name__)
+logger.setLevel(DEBUG)
+
 upload_router = APIRouter()
 
 notification_service = NotificationService()
@@ -48,7 +54,7 @@ async def upload_file(
     )
 
     print ("### debug ###")
-    logger.info(">> debug > IN upload_file (modules/upload/controller/upload_routes.py)")
+    logger.debug(">> debug > IN upload_file (modules/upload/controller/upload_routes.py)")
 
     user_daily_usage = UserUsage(
         id=current_user.id,
@@ -78,7 +84,7 @@ async def upload_file(
 
     try:
         print ("### debug ###")
-        logger.info(">> debug > call upload_file_storage (modules/upload/controller/upload_routes.py)")
+        logger.debug(">> debug > call upload_file_storage (modules/upload/controller/upload_routes.py)")
         file_in_storage = upload_file_storage(file_content, filename_with_brain_id)
         logger.info(f"File {file_in_storage} uploaded successfully")
 
