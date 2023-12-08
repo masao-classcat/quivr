@@ -13,6 +13,7 @@ logger = get_logger(__name__)
 class Neurons(BaseModel):
     def create_vector(self, docs):
         # masao : 18-dec-23
+        # 出力されている。
         logger.info(">> debug > IN : Neurons::create_vector (backend/packages/embeddings/vectors.py)")
         documents_vector_store = get_documents_vector_store()
         logger.info("Creating vector for document")

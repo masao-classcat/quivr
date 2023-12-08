@@ -19,8 +19,8 @@ logger.propagate = False
 
 
 def upload_file_storage(file, file_identifier: str):
-    print ("### debug ###")
-    logger.debug(">> debug > IN upload_file_storage (repository/files/upload_file.py)")
+    # これは出力されている。
+    logger.debug(">> DEBUG > IN upload_file_storage (repository/files/upload_file.py)")
 
     supabase_client: Client = get_supabase_client()
     # res = supabase_client.storage.create_bucket("quivr")

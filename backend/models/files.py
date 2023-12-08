@@ -91,11 +91,12 @@ class File(BaseModel):
 
         os.remove(tmp_file.name)
 
-        logger.debug(f">> debug > chunk_size ; {self.chunk_size}, chunk_overlap : {self.chunk_overlap}")
+        # 出力されている。
+        logger.debug(f">> DEBUG > chunk_size ; {self.chunk_size}, chunk_overlap : {self.chunk_overlap}")
 
         # masao : 12-oct-23 : change text spliltter.
         # separator is not available.
-        logger.debug (">> debug > use RecursiveCharacterTextSplitter")
+        logger.debug (">> DEBUG > use RecursiveCharacterTextSplitter")
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size = self.chunk_size,
             chunk_overlap = self.chunk_overlap
