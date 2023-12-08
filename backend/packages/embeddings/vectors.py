@@ -12,6 +12,8 @@ logger = get_logger(__name__)
 # TODO: Create interface for embeddings and implement it for Supabase and OpenAI (current Quivr)
 class Neurons(BaseModel):
     def create_vector(self, docs):
+        # masao : 18-dec-23
+        logger.info(">> debug > IN : Neurons::create_vector (backend/packages/embeddings/vectors.py)")
         documents_vector_store = get_documents_vector_store()
         logger.info("Creating vector for document")
         logger.info(f"Document: {docs}")
@@ -22,7 +24,7 @@ class Neurons(BaseModel):
                 return sids
 
         except Exception as e:
-            logger.error(f"Error creating vector for document {e}")
+            logger.error(f"### Error creating vector for document {e} ###")
 
     def create_embedding(self, content):
         embeddings = get_embeddings()
