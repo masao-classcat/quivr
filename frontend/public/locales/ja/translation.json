@@ -34,5 +34,8 @@
   "invalidUrl": "Invalid URL",
   "crawlButton": "Crawl",
   "themeSelect": "インターフェイス・テーマ",
-  "languageSelect": "好みの言語"
+  "languageSelect": "好みの言語",
+  "cancel": "キャンセル",
+  "next": "次 (Next)",
+  "previous": "前 (Previous)"
 }

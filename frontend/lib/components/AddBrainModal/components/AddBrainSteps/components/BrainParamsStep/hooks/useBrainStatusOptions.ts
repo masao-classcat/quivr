@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 
-import { BrainStatus, BrainType } from "@/lib/types/brainConfig";
+import { BrainStatus } from "@/lib/types/brainConfig";
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useAddBrainConfigLabels = () => {
+export const useBrainStatusOptions = () => {
   const { t } = useTranslation(["translation", "brain", "config"]);
 
   const brainStatusOptions: {
@@ -19,22 +19,7 @@ export const useAddBrainConfigLabels = () => {
     },
   ];
 
-  const knowledgeSourceOptions: {
-    label: string;
-    value: BrainType;
-  }[] = [
-    {
-      label: t("knowledge_source_doc", { ns: "brain" }),
-      value: "doc",
-    },
-    {
-      label: t("knowledge_source_api", { ns: "brain" }),
-      value: "api",
-    },
-  ];
-
   return {
     brainStatusOptions,
-    knowledgeSourceOptions,
   };
 };

@@ -46,6 +46,8 @@ DROP TABLE IF EXISTS brains_vectors CASCADE;
 -- DROP brains X vectors table (depends on brains)
 DROP TABLE IF EXISTS brain_subscription_invitations CASCADE;
 
+DROP TABLE IF EXISTS composite_brain_connections CASCADE;
+
 --- DROP user_identity table
 DROP TABLE IF EXISTS user_identity CASCADE;
 
