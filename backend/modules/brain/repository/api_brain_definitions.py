@@ -1,36 +1,19 @@
-from enum import Enum
 from typing import Optional
 from uuid import UUID
 
-from models.databases.repository import Repository
-from modules.brain.entity.api_brain_definition_entity import (
-    ApiBrainDefinition,
-    ApiBrainDefinitionSchema,
-    ApiBrainDefinitionSecret,
-)
-from pydantic import BaseModel, Extra
+from models.settings import get_supabase_client
+from modules.brain.dto.inputs import CreateApiBrainDefinition
+from modules.brain.entity.api_brain_definition_entity import ApiBrainDefinitionEntity
+from modules.brain.repository.interfaces import ApiBrainDefinitionsInterface
 
 
-class ApiMethod(str, Enum):
-    GET = "GET"
-    POST = "POST"
-    PUT = "PUT"
-    DELETE = "DELETE"
+class ApiBrainDefinitions(ApiBrainDefinitionsInterface):
+    def __init__(self):
+        self.db = get_supabase_client()
 
-
-class CreateApiBrainDefinition(BaseModel, extra=Extra.forbid):
-    method: ApiMethod
-    url: str
-    params: Optional[ApiBrainDefinitionSchema] = ApiBrainDefinitionSchema()
-    search_params: ApiBrainDefinitionSchema = ApiBrainDefinitionSchema()
-    secrets: Optional[list[ApiBrainDefinitionSecret]] = []
-
-
-class ApiBrainDefinitions(Repository):
-    def __init__(self, supabase_client):
-        self.db = supabase_client
-
-    def get_api_brain_definition(self, brain_id: UUID) -> Optional[ApiBrainDefinition]:
+    def get_api_brain_definition(
+        self, brain_id: UUID
+    ) -> Optional[ApiBrainDefinitionEntity]:
         response = (
             self.db.table("api_brain_definition")
             .select("*")
@@ -40,11 +23,11 @@ class ApiBrainDefinitions(Repository):
         if len(response.data) == 0:
             return None
 
-        return ApiBrainDefinition(**response.data[0])
+        return ApiBrainDefinitionEntity(**response.data[0])
 
     def add_api_brain_definition(
         self, brain_id: UUID, api_brain_definition: CreateApiBrainDefinition
-    ) -> Optional[ApiBrainDefinition]:
+    ) -> Optional[ApiBrainDefinitionEntity]:
         response = (
             self.db.table("api_brain_definition")
             .insert([{"brain_id": str(brain_id), **api_brain_definition.dict()}])
@@ -52,11 +35,11 @@ class ApiBrainDefinitions(Repository):
         )
         if len(response.data) == 0:
             return None
-        return ApiBrainDefinition(**response.data[0])
+        return ApiBrainDefinitionEntity(**response.data[0])
 
     def update_api_brain_definition(
-        self, brain_id: UUID, api_brain_definition: ApiBrainDefinition
-    ) -> Optional[ApiBrainDefinition]:
+        self, brain_id: UUID, api_brain_definition: ApiBrainDefinitionEntity
+    ) -> Optional[ApiBrainDefinitionEntity]:
         response = (
             self.db.table("api_brain_definition")
             .update(api_brain_definition.dict(exclude={"brain_id"}))
@@ -65,7 +48,7 @@ class ApiBrainDefinitions(Repository):
         )
         if len(response.data) == 0:
             return None
-        return ApiBrainDefinition(**response.data[0])
+        return ApiBrainDefinitionEntity(**response.data[0])
 
     def delete_api_brain_definition(self, brain_id: UUID) -> None:
         self.db.table("api_brain_definition").delete().filter(
