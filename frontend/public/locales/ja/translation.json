@@ -36,6 +36,6 @@
   "themeSelect": "インターフェイス・テーマ",
   "languageSelect": "好みの言語",
   "cancel": "キャンセル",
-  "next": "次 (Next)",
-  "previous": "前 (Previous)"
+  "next": "次へ",
+  "previous": "戻る"
 }
