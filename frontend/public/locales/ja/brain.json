@@ -48,8 +48,8 @@
   "cancel_set_brain_status_to_private": "No, keep it public",
   "empty_brain_description": "No description",
   "myBrains": "My Brains",
-  "knowledge_source_doc": "Documents",
-  "knowledge_source_api": "App (Through API)",
+  "knowledge_source_doc": "ドキュメント",
+  "knowledge_source_api": "App (API 経由)",
   "knowledge_source_label": "Knowledge source",
   "knowledge_source_composite_brain": "Agent",
   "api_brain": {
