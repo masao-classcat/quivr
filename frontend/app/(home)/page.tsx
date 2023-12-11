@@ -11,7 +11,6 @@ import {
   HomeSection,
   IntroSection,
   SecuritySection,
-  TestimonialsSection,
 } from "./components";
 import { HomeHeaderBackground } from "./components/HomeHeader/components/HomeHeaderBackground";
 import { UseCases } from "./components/UseCases/UseCases";
@@ -53,10 +52,6 @@ const HomePage = (): JSX.Element => {
 
         <HomeSection bg="bg-white" slantBefore="down" slantAfter="up">
           <SecuritySection />
-        </HomeSection>
-
-        <HomeSection bg="bg-[#FCFAF6]" slantCurrent="up">
-          <TestimonialsSection />
         </HomeSection>
 
         <HomeSection
