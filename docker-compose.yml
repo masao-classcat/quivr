@@ -20,7 +20,6 @@ services:
     restart: always
     ports:
       - 3000:3000
-      
 
   backend-core:
     image: stangirard/quivr-backend-prebuilt:latest
@@ -33,7 +32,7 @@ services:
     container_name: backend-core
     healthcheck:
       test: [ "CMD", "curl", "http://localhost:5050/healthz" ]
-    command: 
+    command:
       - "uvicorn"
       - "main:app"
       - "--reload"
@@ -43,15 +42,19 @@ services:
       - "5050"
       - "--workers"
       - "1"
-    restart: always 
+      #- "--ssl-keyfile"
+      #- "/letsencrypt/live/chatbot.classcat.com/privkey.pem"
+      #- "--ssl-certfile"
+      #- "/letsencrypt/live/chatbot.classcat.com/fullchain.pem"
+    restart: always
     volumes:
       - ./backend/:/code/
     #  - /etc/letsencrypt/:/letsencrypt/
     depends_on:
       db:
-          condition: service_healthy
+        condition: service_healthy
       kong:
-          condition: service_healthy
+        condition: service_healthy
     ports:
       - 5050:5050
 
@@ -72,7 +75,7 @@ services:
       - .env
     build:
       context: backend
-      dockerfile:  Dockerfile
+      dockerfile: Dockerfile
     container_name: worker
     command: celery -A celery_worker worker -l info
     restart: always
@@ -87,7 +90,7 @@ services:
       - .env
     build:
       context: backend
-      dockerfile:  Dockerfile
+      dockerfile: Dockerfile
     container_name: beat
     command: celery -A celery_worker beat -l info
     restart: always
@@ -101,7 +104,7 @@ services:
       - .env
     build:
       context: backend
-      dockerfile:  Dockerfile
+      dockerfile: Dockerfile
     container_name: flower
     command: celery -A celery_worker flower -l info --port=5555
     restart: always
@@ -417,7 +420,7 @@ services:
     #     target: /opt/app/rel/logflare/bin/gcloud.json
     #     read_only: true
     environment:
-      LOGFLARE_NODE_HOST:  127.0.0.1
+      LOGFLARE_NODE_HOST: 127.0.0.1
       DB_USERNAME: supabase_admin
       DB_DATABASE: ${POSTGRES_DB}
       DB_HOSTNAME: ${POSTGRES_HOST}
@@ -434,18 +437,17 @@ services:
       POSTGRES_BACKEND_URL: postgresql://supabase_admin:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
       POSTGRES_BACKEND_SCHEMA: _analytics
       LOGFLARE_FEATURE_FLAG_OVERRIDE: multibackend=true
-
       # Uncomment to use Big Query backend for analytics
       # GOOGLE_PROJECT_ID: ${GOOGLE_PROJECT_ID}
       # GOOGLE_PROJECT_NUMBER: ${GOOGLE_PROJECT_NUMBER}
     ports:
       - 4000:4000
     entrypoint: |
-                  sh -c `cat <<'EOF' > run.sh && sh run.sh
-                  ./logflare eval Logflare.Release.migrate
-                  ./logflare start --sname logflare
-                  EOF
-                  `
+      sh -c `cat <<'EOF' > run.sh && sh run.sh
+      ./logflare eval Logflare.Release.migrate
+      ./logflare start --sname logflare
+      EOF
+      `
 
   # Comment out everything below this point if you are using an external Postgres database
   db:
