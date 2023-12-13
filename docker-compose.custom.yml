@@ -43,6 +43,19 @@ services:
       - "5050"
       - "--workers"
       - "1"
+      #- "uvicorn"
+      #- "main:app"
+      #- "--reload"
+      #- "--host"
+      #- "0.0.0.0"
+      #- "--port"
+      #- "5050"
+      #- "--workers"
+      #- "1"
+      #- "--ssl-keyfile"
+      #- "/letsencrypt/live/chatbot.classcat.com/privkey.pem"
+      #- "--ssl-certfile"
+      #- "/letsencrypt/live/chatbot.classcat.com/fullchain.pem"
     restart: always
     volumes:
       - ./backend/:/code/
