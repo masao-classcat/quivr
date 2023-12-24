@@ -5,6 +5,7 @@
   "back_to_chat": "チャットに戻る",
   "brain": "brain",
   "brains": "brains",
+  "change_brain": "Change brain",
   "chat": "チャット",
   "chatDeleted": "Chat successfully deleted. Id: {{id}}",
   "chatNameUpdated": "Chat name updated",
@@ -18,6 +19,7 @@
   "keyboard_shortcuts": "キーボード・ショートカット",
   "limit_reached": "You have reached the limit of requests, please try again later",
   "missing_brain": "Please select a brain to chat with",
+  "new_discussion": "New discussion",
   "new_prompt": "Create new prompt",
   "noCurrentBrain": "No current brain",
   "onboarding": {
@@ -35,6 +37,7 @@
     "what_is_brain": "Brain とは何ですか？",
     "what_is_quivr": "ClassCat Chatbot とは何ですか？"
   },
+  "parameters": "Parameters",
   "receivedResponse": "Received response. Starting to handle stream...",
   "resposeBodyNull": "Response body is null",
   "shortcut_choose_prompt": "#: 特定のプロンプトの選択",

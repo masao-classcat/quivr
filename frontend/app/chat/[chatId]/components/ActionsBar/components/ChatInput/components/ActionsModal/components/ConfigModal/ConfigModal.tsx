@@ -1,12 +1,12 @@
-/* eslint-disable max-lines */
 import { useTranslation } from "react-i18next";
-import { MdCheck, MdSettings } from "react-icons/md";
+import { LuChevronRight, LuSettings } from "react-icons/lu";
+import { MdCheck } from "react-icons/md";
 
-import Button from "@/lib/components/ui/Button";
 import { Modal } from "@/lib/components/ui/Modal";
 import { defineMaxTokens } from "@/lib/helpers/defineMaxTokens";
 
 import { useConfigModal } from "./hooks/useConfigModal";
+import { Button } from "../Button";
 
 export const ConfigModal = (): JSX.Element => {
   const {
@@ -18,19 +18,18 @@ export const ConfigModal = (): JSX.Element => {
     model,
     accessibleModels,
   } = useConfigModal();
-  const { t } = useTranslation("config");
+  const { t } = useTranslation(["config", "chat"]);
 
   // masao : 12-oct-23 : localization
   return (
     <Modal
       Trigger={
         <Button
-          className="p-2 sm:px-3"
-          variant={"tertiary"}
-          data-testid="config-button"
-        >
-          <MdSettings className="text-lg sm:text-xl lg:text-2xl" />
-        </Button>
+          label={t("chat:parameters")}
+          startIcon={<LuSettings size={18} />}
+          endIcon={<LuChevronRight size={18} />}
+          className="w-full"
+        />
       }
       title="チャット設定"
       desc="チャット設定を調整します"
@@ -69,16 +68,16 @@ export const ConfigModal = (): JSX.Element => {
         </fieldset>
 
         <Button
-          className="mt-12 self-end"
+          className="mt-12 self-end text-white"
           type="button"
           onClick={() => {
             handleSubmit();
             setIsConfigModalOpen(false);
           }}
-        >
-          保存
-          <MdCheck className="text-xl" />
-        </Button>
+          variant={"primary"}
+          label="保存"
+          endIcon={<MdCheck className="text-xl" />}
+        />
       </form>
     </Modal>
   );
