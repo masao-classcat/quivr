@@ -1,32 +1,24 @@
 import time
 
+from logger import get_logger
 from models import File
 from models.settings import get_supabase_db
 from modules.brain.service.brain_vector_service import BrainVectorService
 from packages.embeddings.vectors import Neurons
 from repository.files.upload_file import DocumentSerializable
 
-# masao : 12-oct-23
-from logging import getLogger, StreamHandler, DEBUG
-logger = getLogger(__name__)
-handler = StreamHandler()
-handler.setLevel(DEBUG)
-logger.setLevel(DEBUG)
-logger.addHandler(handler)
-logger.propagate = False
+logger = get_logger(__name__)
+
 
 async def process_file(
     file: File,
     loader_class,
     brain_id,
 ):
-    logger.debug(f"### debug : IN : process_file (backend/packages/files/parsers/common.py)")
     database = get_supabase_db()
     dateshort = time.strftime("%Y%m%d")
     neurons = Neurons()
 
-    # masao
-    logger.debug(f"call file.compute_documents")
     file.compute_documents(loader_class)
 
     metadata = {
@@ -46,14 +38,14 @@ async def process_file(
             )
             docs.append(doc_with_metadata)
 
-    logger.debug(f">> DEBUG >> call create_vector")
     created_vector = neurons.create_vector(docs)
 
     brain_vector_service = BrainVectorService(brain_id)
     for created_vector_id in created_vector:
-        brain_vector_service.create_brain_vector(
+        result = brain_vector_service.create_brain_vector(
             created_vector_id, metadata["file_sha1"]
         )
+        logger.debug(f"Brain vector created: {result}")
 
     database.set_file_sha_from_metadata(metadata["file_sha1"])
 
