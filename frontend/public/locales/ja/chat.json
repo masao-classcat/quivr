@@ -1,6 +1,6 @@
 {
   "actions_bar_placeholder": "@brain に質問したり #prompt を選択できます",
-  "add_content_card_button_tooltip": "Add knowledge to a brain",
+  "add_document": "Add document",
   "ask": "質問をするか、タスクについて説明してください。",
   "back_to_chat": "チャットに戻る",
   "brain": "brain",
