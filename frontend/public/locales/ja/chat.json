@@ -41,7 +41,7 @@
     "what_is_brain": "Brain とは何ですか？",
     "what_is_quivr": "ClassCat Chatbot とは何ですか？"
   },
-  "parameters": "Parameters",
+  "parameters": "パラメータ",
   "receivedResponse": "Received response. Starting to handle stream...",
   "resposeBodyNull": "Response body is null",
   "shortcut_choose_prompt": "#: 特定のプロンプトの選択",

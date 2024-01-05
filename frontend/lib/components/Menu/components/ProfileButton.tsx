@@ -7,7 +7,7 @@ export const ProfileButton = (): JSX.Element => {
   return (
     <Link href="/user">
       <Button
-        label="Profile"
+        label="プロフィール"
         startIcon={
           <div className="p-3 bg-secondary text-primary rounded-full">
             <LuUser size={25} />
