@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { LuSearch } from "react-icons/lu";
 
 import Field from "@/lib/components/ui/Field";
 
@@ -17,10 +18,12 @@ export const BrainSearchBar = ({
     <Field
       name="brainsearch"
       placeholder={t("searchBrain")}
-      autoFocus
       autoComplete="off"
       value={searchQuery}
       onChange={(e) => setSearchQuery(e.target.value)}
+      className="w-auto"
+      inputClassName="w-max w-[200px] rounded-3xl border-none"
+      icon={<LuSearch className="text-primary" size={20} />}
     />
   );
 };
