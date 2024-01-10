@@ -1,8 +1,1 @@
-{
-    "title": "ログアウト",
-    "subtitle": "See you next time",
-    "areYouSure": "サインアウトしますが、よろしいですか？",
-    "cancel": "キャンセル",
-    "error": "Error on logout {{errorMessage}}",
-    "loggedOut": "正常にログアウトしました"
-}
+{"title":"Logout","subtitle":"See you next time","areYouSure":"Are you sure you want to sign out ?","cancel":"Cancel","error":"Error on logout {{errorMessage}}","loggedOut":"Logged out successfully"}
